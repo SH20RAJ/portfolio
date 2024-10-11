@@ -1,6 +1,7 @@
 import React from "react";
 import { Spotlight } from "./ui/Spotlight";
 import { Button2 } from "./Button";
+import Image from "next/image";
 
 export function SpotlightPreview() {
   return (
@@ -9,9 +10,11 @@ export function SpotlightPreview() {
       <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
       <div className="p-4 max-w-7xl mx-auto relative z-10 w-full pt-20 md:pt-0">
         <div className="flex justify-center mt-4">
-          <img
+          <Image
             src="https://github.com/sh20raj.png"
             alt="Logo"
+            height="100"
+            width="100"
             className="h-40 w-40 rounded-full shadow-lg mx-auto mb-4"
           />
         </div>
@@ -22,7 +25,10 @@ export function SpotlightPreview() {
        
         <p
           className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto">
-          Discover my journey as a developer, explore my projects, and learn about the skills that drive my passion for technology. Let's create something amazing together!
+          Discover my journey as a developer, explore my projects, and learn about the skills that drive my passion for technology. Let&apos;s create something amazing together!
+        </p>
+        <p className="mt-4 font-normal text-base text-neutral-500 max-w-lg text-center mx-auto">
+          This website is under <span className="text-neutral-300">construction</span>.
         </p>
         <div className="flex justify-center mt-4">
           <Button2>Explore</Button2>
