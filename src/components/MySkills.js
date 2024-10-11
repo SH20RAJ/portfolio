@@ -9,8 +9,7 @@ export const products = [
   {
     title: "React",
     link: "https://react.dev",
-    thumbnail:
-      "https://ecodesoft.com/wp-content/uploads/2022/10/react.jpg",
+    thumbnail: "https://ecodesoft.com/wp-content/uploads/2022/10/react.jpg",
   },
   {
     title: "Next.js",
@@ -22,7 +21,7 @@ export const products = [
     title: "Tailwind CSS",
     link: "https://tailwindcss.com",
     thumbnail:
-      "https://tailwindcss.com/_next/static/media/card.a1cd9cff.jpg",
+      "https://made-byshape.transforms.svdcdn.com/production/uploads/images/tailwind-thumb.jpg?w=400&q=80&fm=webp&fit=crop&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1609771799&s=f4f2d93d9e2c9cf40b964258bf5cd4b1",
   },
 
   {
@@ -54,13 +53,12 @@ export const products = [
     title: "Git and Github",
     link: "https://github.com",
     thumbnail:
-      "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg",
+      "https://user-images.githubusercontent.com/6633808/160689302-3fe5e5d4-ba24-4525-8ed1-a8351ccbc0ef.png",
   },
   {
     title: "Docker",
     link: "https://www.docker.com",
-    thumbnail:
-      "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png",
+    thumbnail: "https://logz.io/wp-content/uploads/2016/01/docker-facebook.png",
   },
   {
     title: "AWS",
@@ -71,27 +69,25 @@ export const products = [
   {
     title: "Linux",
     link: "https://www.linux.org",
-    thumbnail:
-      "https://www.vectorlogo.zone/logos/linux/linux-icon.svg",
+    thumbnail: "https://www.vectorlogo.zone/logos/linux/linux-icon.svg",
   },
 
   {
     title: "Database",
     link: "https://www.sqlite.org",
-    thumbnail:
-      "https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg",
+    thumbnail: "https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg",
   },
   {
     title: "Tensorflow",
     link: "https://www.tensorflow.org",
     thumbnail:
-      "https://www.tensorflow.org/images/tf_logo_social.png",
+      "https://www.netsolutions.com/insights/wp-content/uploads/2020/04/tensor-flow.webp",
   },
   {
     title: "OpenCV",
     link: "https://opencv.org",
     thumbnail:
-      "https://opencv.org/wp-content/uploads/2023/09/opencv-logo-white.png",
+      "https://pyimagesearch.com/wp-content/uploads/2018/05/opencv_tutorial_header.jpg",
   },
   {
     title: "NLP",
