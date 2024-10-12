@@ -5,6 +5,7 @@ import { MySkills } from "@/components/MySkills";
 import React from "react";
 import { OtherSkills } from "@/components/OtherSkills";
 import { Projects } from "@/components/Projects";
+import Footer from "@/components/Footer";
 export default function page() {
   return (
     <div>
@@ -21,6 +22,7 @@ export default function page() {
         <h1 className="text-4xl font-bold text-center ">Projects <span className="text-primary underline decoration-wavy decoration-blue-500">I've Worked On</span></h1>
         <Projects />
       </div>
+      <Footer />
     </div>
   );
 }
