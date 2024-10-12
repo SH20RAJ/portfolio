@@ -1,12 +1,16 @@
 import { cn } from "@/lib/utils";
 import {
   IconAdjustmentsBolt,
+  IconArticle,
+  IconBorderStyle2,
   IconCloud,
   IconCurrencyDollar,
   IconEaseInOut,
   IconHeart,
   IconHelp,
+  IconMusic,
   IconRouteAltLeft,
+  IconSearch,
   IconTerminal2,
 } from "@tabler/icons-react";
 
@@ -85,7 +89,43 @@ export function Projects() {
       title: "ShowdownCSS",
       description:
         "Welcome to ShowdownCSS, the CSS library made for styling Markdown content parsed by Showdown!",
+      icon: <IconBorderStyle2 />, // Replace with an appropriate icon
+    },
+    {
+      title: "AppPages Public",
+      description:
+        "Effortlessly showcase your apps to a wide audience with AppsPages. Host and manage your applications, share app links, and track app performance with powerful analytics tools.",
       icon: <IconAdjustmentsBolt />, // Replace with an appropriate icon
+    },
+    {
+      title: "toggle-search-engine",
+      description:
+        "Toggle between popular search engines search results",
+      icon: <IconSearch />, // Replace with an appropriate icon
+    },
+    {
+      title: "soundwave",
+      description:
+        "SoundWave is a simple, customizable HTML5 audio player library designed to be lightweight and easy to integrate into any web project.",
+      icon: <IconMusic />, // Replace with an appropriate icon
+    },
+    {
+      title: "Phpgram",
+      description:
+        "A PHP library for interacting with the Telegram Bot API.",
+      icon: <IconAdjustmentsBolt />, // Replace with an appropriate icon
+    },
+    {
+      title: "Article",
+      description:
+        "Welcome to article.shade.cool, a free and open-source blogging platform where you can post your articles on various genres and publish them effortlessly. Our platform handles all the subsequent tasks.",
+      icon: <IconArticle />, // Replace with an appropriate icon
+    },
+    {
+      title: "😎 See More...",
+      description:
+        "Visit my Github to see more projects (400+)",
+      icon: <IconHeart />, // Replace with an appropriate icon
     },
   ];
   return (
