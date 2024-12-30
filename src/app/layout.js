@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1828915420581549"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
       </head>
       <body className={inter.className}>{children}</body>
