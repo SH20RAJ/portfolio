@@ -4,6 +4,7 @@ import { Button2 } from "./Button";
 import Image from "next/image";
 import Link from "next/link";
 import HyperText from "./ui/hyper-text";
+import { ConfettiButton } from "./ui/confetti";
 
 export function SpotlightPreview() {
   return (
@@ -44,14 +45,22 @@ export function SpotlightPreview() {
           This website is under <span className="text-neutral-300">construction</span>.
         </p> */}
         <div className="flex justify-center gap-4 mt-4">
-          <Link
-            className=" p-4"
-            href={
-              "https://www.linkedin.com/in/sh20raj/"
-            }
+          <ConfettiButton
+          className="p-4 bg-transparent hover:bg-transparent"
+            options={{
+              get angle() {
+                return Math.random() * 360;
+              },
+            }}
           >
-            <Button2 className=" bg-fuchsia-400 ml-10"> {" "}Connect</Button2>
-          </Link>
+            {" "}
+            <Link
+              className=" p-4"
+              href={"https://www.linkedin.com/in/sh20raj/"}
+            >
+              <Button2 className=" bg-fuchsia-400 ml-10"> Connect</Button2>
+            </Link>
+          </ConfettiButton>
         </div>
       </div>
     </div>

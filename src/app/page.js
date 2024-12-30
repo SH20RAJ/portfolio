@@ -1,3 +1,4 @@
+"use client";
 import NavBar from "@/components/NavBar";
 import { SpotlightPreview } from "@/components/Spot";
 import React from "react";
