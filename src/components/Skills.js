@@ -32,74 +32,211 @@ export function Skills() {
       <div className="relative text-2xl flex h-[500px] w-full max-w-[600px] flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
         <Tree
           className="overflow-hidden rounded-md bg-background p-2"
-          initialExpandedItems={["1", "2", "3", "4"]}
+          initialExpandedItems={["1", "2", "3", "4", "5"]}
         >
           <Folder element="Technical Skills" value="1">
-            <Folder element="Languages & Frameworks" value="2">
-              <File value="js" onClick={() => setSelectedSkill("js")}>
-                <p>JavaScript.js</p>
+            <Folder element="Languages" value="2">
+              <File
+                fileIcon={
+                  <img
+                    className="h-4 w-4"
+                    src="https://www.svgrepo.com/show/353528/c.svg"
+                  />
+                }
+                value="c"
+                onClick={() => setSelectedSkill("c")}
+              >
+                <p>main.c</p>
               </File>
-              <File value="next" onClick={() => setSelectedSkill("next")}>
-                <p>Next.js</p>
+              <File
+                fileIcon={
+                  <img
+                    className="h-4 w-4"
+                    src="https://www.svgrepo.com/show/452183/cpp.svg"
+                  />
+                }
+                value="c"
+                onClick={() => setSelectedSkill("c")}
+              >
+                <p>main.cpp</p>
               </File>
-              <File value="react" onClick={() => setSelectedSkill("react")}>
-                <p>React.jsx</p>
-              </File>
-              <File value="node" onClick={() => setSelectedSkill("node")}>
-                <p>Node.js</p>
-              </File>
-              <File value="python" onClick={() => setSelectedSkill("python")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.python} />}
+                value="cpp"
+                onClick={() => setSelectedSkill("cpp")}
+              >
                 <p>Python.py</p>
               </File>
-              <File value="html" onClick={() => setSelectedSkill("html")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.html} />}
+                value="html"
+                onClick={() => setSelectedSkill("html")}
+              >
                 <p>index.html</p>
               </File>
-              <File value="css" onClick={() => setSelectedSkill("css")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.css} />}
+                value="css"
+                onClick={() => setSelectedSkill("css")}
+              >
                 <p>styles.css</p>
               </File>
-              <File value="php" onClick={() => setSelectedSkill("php")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.php} />}
+                value="php"
+                onClick={() => setSelectedSkill("php")}
+              >
                 <p>index.php</p>
               </File>
             </Folder>
 
-            <Folder element="Databases" value="3">
-              <File value="mysql" onClick={() => setSelectedSkill("mysql")}>
+            <Folder element="DevOps" value="7">
+              <File
+                fileIcon={
+                  <img
+                    className="h-4 w-4"
+                    src="https://www.svgrepo.com/show/373553/docker.svg"
+                  />
+                }
+                value="docker"
+                onClick={() => setSelectedSkill("docker")}
+              >
+                <p>Dockerfile</p>
+              </File>
+              <File
+                fileIcon={
+                  <img
+                    className="h-4 w-4"
+                    src="https://www.svgrepo.com/show/448233/kubernetes.svg"
+                  />
+                }
+                value="kubernetes"
+                onClick={() => setSelectedSkill("kubernetes")}
+              >
+                <p>k8s-config.yaml</p>
+              </File>
+              <File
+                fileIcon={
+                  <img
+                    className="h-4 w-4"
+                    src="https://www.svgrepo.com/show/354447/terraform-icon.svg"
+                  />
+                }
+                value="terraform"
+                onClick={() => setSelectedSkill("terraform")}
+              >
+                <p>main.tf</p>
+              </File>
+            </Folder>
+
+            <Folder element="Frameworks" value="3">
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.next} />}
+                value="next"
+                onClick={() => setSelectedSkill("next")}
+              >
+                <p>Next.js</p>
+              </File>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.react} />}
+                value="react"
+                onClick={() => setSelectedSkill("react")}
+              >
+                <p>React.jsx</p>
+              </File>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.node} />}
+                value="node"
+                onClick={() => setSelectedSkill("node")}
+              >
+                <p>Node.js</p>
+              </File>
+            </Folder>
+
+            <Folder element="Databases" value="4">
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.mysql} />}
+                value="mysql"
+                onClick={() => setSelectedSkill("mysql")}
+              >
                 <p>MySQL.sql</p>
               </File>
-              <File value="mongodb" onClick={() => setSelectedSkill("mongodb")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.mongodb} />}
+                value="mongodb"
+                onClick={() => setSelectedSkill("mongodb")}
+              >
                 <p>MongoDB.json</p>
               </File>
             </Folder>
 
-            <Folder element="Tools" value="4">
-              <File value="git" onClick={() => setSelectedSkill("git")}>
+            <Folder element="Tools" value="5">
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.git} />}
+                value="git"
+                onClick={() => setSelectedSkill("git")}
+              >
                 <p>.gitconfig</p>
               </File>
-              <File value="github" onClick={() => setSelectedSkill("github")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.github} />}
+                value="github"
+                onClick={() => setSelectedSkill("github")}
+              >
                 <p>github-actions.yml</p>
               </File>
               <File
+                fileIcon={
+                  <img className="h-4 w-4" src={skillImages.cloudflare} />
+                }
                 value="cloudflare"
                 onClick={() => setSelectedSkill("cloudflare")}
               >
                 <p>cloudflare.config</p>
               </File>
-              <File value="aws" onClick={() => setSelectedSkill("aws")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.aws} />}
+                value="aws"
+                onClick={() => setSelectedSkill("aws")}
+              >
                 <p>aws.config</p>
               </File>
+               <File
+                fileIcon={
+                  <img
+                    className="h-4 w-4"
+                    src="https://www.svgrepo.com/show/448218/digital-ocean.svg"
+                  />
+                }
+                value="digitalocean"
+                onClick={() => setSelectedSkill("digitalocean")}
+              >
+                <p>digitalocean.config</p>
+              </File>
+
             </Folder>
 
-            <Folder element="Bots" value="5">
+            <Folder element="Bots" value="6">
               <File
+                fileIcon={
+                  <img className="h-4 w-4" src={skillImages.telegram} />
+                }
                 value="telegram"
                 onClick={() => setSelectedSkill("telegram")}
               >
                 <p>telegram-bot.js</p>
               </File>
-              <File value="discord" onClick={() => setSelectedSkill("discord")}>
+              <File
+                fileIcon={<img className="h-4 w-4" src={skillImages.discord} />}
+                value="discord"
+                onClick={() => setSelectedSkill("discord")}
+              >
                 <p>discord-bot.js</p>
               </File>
               <File
+                fileIcon={
+                  <img className="h-4 w-4" src={skillImages.whatsapp} />
+                }
                 value="whatsapp"
                 onClick={() => setSelectedSkill("whatsapp")}
               >
