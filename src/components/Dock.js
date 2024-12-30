@@ -1,6 +1,12 @@
 "use client";
 
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon, Tornado } from "lucide-react";
+import {
+  CalendarIcon,
+  HomeIcon,
+  MailIcon,
+  PencilIcon,
+  Tornado,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -144,10 +150,16 @@ export function DockDemo() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Tornado className="" />
+              <Link
+                href={
+                  "https://docs.google.com/document/d/1_c8_1teca5JlCIFnsSC0rqoHcvxD5VJrlE-DeKZSXf4/edit?usp=sharing"
+                }
+              >
+                <Tornado className="" />
+              </Link>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Theme</p>
+              <p>Resume</p>
             </TooltipContent>
           </Tooltip>
         </DockIcon>

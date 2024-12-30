@@ -1,7 +1,8 @@
-'use client';
+"use client";
 import { File, Folder, Tree } from "@/components/ui/file-tree";
 import { useState } from "react";
 import Image from "next/image";
+import { IconCloudDemo } from "./IconCloud";
 
 export function Skills() {
   const [selectedSkill, setSelectedSkill] = useState(null);
@@ -27,7 +28,7 @@ export function Skills() {
   };
 
   return (
-    <div className="flex gap-4 w-full  justify-center items-center  ">
+    <div className="flex gap-4 w-full flex-col sm:flex-row  justify-center items-center  ">
       <div className="relative text-2xl flex h-[500px] w-full max-w-[600px] flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
         <Tree
           className="overflow-hidden rounded-md bg-background p-2"
@@ -60,7 +61,7 @@ export function Skills() {
                 <p>index.php</p>
               </File>
             </Folder>
-            
+
             <Folder element="Databases" value="3">
               <File value="mysql" onClick={() => setSelectedSkill("mysql")}>
                 <p>MySQL.sql</p>
@@ -69,7 +70,7 @@ export function Skills() {
                 <p>MongoDB.json</p>
               </File>
             </Folder>
-            
+
             <Folder element="Tools" value="4">
               <File value="git" onClick={() => setSelectedSkill("git")}>
                 <p>.gitconfig</p>
@@ -77,22 +78,31 @@ export function Skills() {
               <File value="github" onClick={() => setSelectedSkill("github")}>
                 <p>github-actions.yml</p>
               </File>
-              <File value="cloudflare" onClick={() => setSelectedSkill("cloudflare")}>
+              <File
+                value="cloudflare"
+                onClick={() => setSelectedSkill("cloudflare")}
+              >
                 <p>cloudflare.config</p>
               </File>
               <File value="aws" onClick={() => setSelectedSkill("aws")}>
                 <p>aws.config</p>
               </File>
             </Folder>
-            
+
             <Folder element="Bots" value="5">
-              <File value="telegram" onClick={() => setSelectedSkill("telegram")}>
+              <File
+                value="telegram"
+                onClick={() => setSelectedSkill("telegram")}
+              >
                 <p>telegram-bot.js</p>
               </File>
               <File value="discord" onClick={() => setSelectedSkill("discord")}>
                 <p>discord-bot.js</p>
               </File>
-              <File value="whatsapp" onClick={() => setSelectedSkill("whatsapp")}>
+              <File
+                value="whatsapp"
+                onClick={() => setSelectedSkill("whatsapp")}
+              >
                 <p>whatsapp-bot.js</p>
               </File>
             </Folder>
@@ -100,7 +110,7 @@ export function Skills() {
         </Tree>
       </div>
 
-      <div className="relative h-[500px] w-full max-w-[600px] flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+      <div className="relative h-[500px] w-full max-w-[600px] flex-col items-center justify-center overflow-hidden rounded-lg border  md:shadow-xl before:absolute before:h-[600px] before:w-[600px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-fuchs  backdrop-blur-xl before:to-transparent before:blur-2xl before:content-[''] before:-z-20">
         {selectedSkill ? (
           <div className="h-full w-full flex items-center justify-center p-8">
             <Image
@@ -112,8 +122,8 @@ export function Skills() {
             />
           </div>
         ) : (
-          <div className="h-full w-full flex items-center justify-center text-muted-foreground">
-            Click on a skill to see its preview
+          <div className="h-full w-full flex items-center justify-center   ">
+            <IconCloudDemo />
           </div>
         )}
       </div>

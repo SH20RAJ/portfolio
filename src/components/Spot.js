@@ -3,18 +3,19 @@ import { Spotlight } from "./ui/Spotlight";
 import { Button2 } from "./Button";
 import Image from "next/image";
 import Link from "next/link";
+import HyperText from "./ui/hyper-text";
 
 export function SpotlightPreview() {
   return (
     <div
-      className="h-[50rem] w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden"
-      style={{
-        backgroundImage:
-          "url('https://media.licdn.com/dms/image/v2/D4D16AQFul3_I7fBVYw/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1733342156445?e=1741219200&v=beta&t=8grJ0v87aDXELvxn5GjjgaMEMxMPKabIe4SWAqEvAgk')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backdropFilter: "blur(10px)",
-      }}
+      className="h-[50rem] w-full rounded-md flex md:items-center md:justify-center   antialiased bg-grid-white/[0.02] relative overflow-hidden"
+      // style={{
+      //   backgroundImage:
+      //     "url('https://media.licdn.com/dms/image/v2/D4D16AQFul3_I7fBVYw/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1733342156445?e=1741219200&v=beta&t=8grJ0v87aDXELvxn5GjjgaMEMxMPKabIe4SWAqEvAgk')",
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      //   backdropFilter: "blur(10px)",
+      // }}
     >
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
@@ -30,9 +31,9 @@ export function SpotlightPreview() {
             className="h-40 w-40 rounded-full shadow-lg mx-auto mb-4"
           />
         </div>
-        <h1 className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 ">
-          Welcome to <span className="text-fuchsia-400">My Portfolio</span>
-        </h1>
+        <HyperText className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 ">
+          Welcome to My Portfolio
+        </HyperText>
 
         <p className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto">
           Discover my journey as a developer, explore my projects, and learn
@@ -43,16 +44,13 @@ export function SpotlightPreview() {
           This website is under <span className="text-neutral-300">construction</span>.
         </p> */}
         <div className="flex justify-center gap-4 mt-4">
-          <Link href={"#explore"}>
-            <Button2>Explore</Button2>
-          </Link>
           <Link
-            className=""
+            className=" p-4"
             href={
-              "https://docs.google.com/document/d/1_c8_1teca5JlCIFnsSC0rqoHcvxD5VJrlE-DeKZSXf4/edit?usp=sharing"
+              "https://www.linkedin.com/in/sh20raj/"
             }
           >
-            <Button2 clas=" bg-fuchsia-400">Resume</Button2>
+            <Button2 className=" bg-fuchsia-400 ml-10"> {" "}Connect</Button2>
           </Link>
         </div>
       </div>
