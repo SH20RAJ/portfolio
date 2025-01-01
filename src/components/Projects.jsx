@@ -21,17 +21,16 @@ const projects = [
     title: "CoolShade",
     description:
       "Protect Nurture Accessible our heritage and culture | SIH Project",
-    // image: "/projects/coolshade.png",
+    image: "https://i.imgur.com/Ug93rCx.png",
     technologies: ["React", "Node.js", "MongoDB"],
     github: "https://github.com/SH20RAJ/CoolShade",
-    demo: "https://coolshade.sh20raj.com",
+    demo: "https://shade.cool",
     icon: <IconTerminal2 className="w-6 h-6" />,
   },
-  // Add more projects here
   {
     title: "Pics",
     description: "Pics - Image Hosting Made Easy",
-    // image: "/projects/pics.png",
+    image: "https://i.imgur.com/cJpLL1c.png",
     technologies: ["JavaScript", "HTML5", "CSS3"],
     github: "https://github.com/SH20RAJ/Pics",
     demo: "https://pics.shade.cool",
@@ -40,7 +39,8 @@ const projects = [
   {
     title: "Sopplayer",
     description: "Sopplayer - HTML5 Stylish Video Player",
-    // image: "/projects/sopplayer.png",
+    image:
+      "https://1.bp.blogspot.com/-MXdsGGbh59A/X-cM2B2eQ6I/AAAAAAAAAZU/KLEP-6BI85gMXR-7NjBWIdxnCKyIaNzbACLcBGAsYHQ/w640-h361/sopplayer.JPG",
     technologies: ["JavaScript", "HTML5", "CSS3"],
     github: "https://github.com/SH20RAJ/Sopplayer",
     demo: "https://sopplayer.sh20raj.com",
@@ -50,11 +50,22 @@ const projects = [
     title: "BitSyll",
     description:
       "Welcome to the BIT Mesra Study Repository! This repository is designed to provide a centralized location for students to access study materials, resources, and collaborate on projects.",
-    // image: "/projects/rookus.png",
+    image: "https://bitsyll.pages.dev/BITSYLL.png",
     technologies: ["NextJS", "ShadCN", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/bitsyll",
     demo: "https://bitsyll.pages.dev",
     icon: <IconEaseInOut className="w-6 h-6" />,
+  },
+  {
+    title: "OctoPress",
+    description:
+      "Transform your GitHub Issues into a powerful CMS for your blog! Built with Next.js, featuring automatic SEO optimization, server-side rendering, and flexible deployment options.",
+    image:
+      "https://repository-images.githubusercontent.com/908621796/74f23302-57dd-4d04-966c-8fcb678be778",
+    technologies: ["Next.js", "GitHub API", "SSR", "SEO"],
+    github: "https://github.com/SH20RAJ/OctoPress",
+    demo: "https://octopress.netlify.app/",
+    icon: <IconArticle className="w-6 h-6" />,
   },
 ];
 
