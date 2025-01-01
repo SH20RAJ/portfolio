@@ -201,7 +201,7 @@ export function Skills() {
               >
                 <p>aws.config</p>
               </File>
-               <File
+              <File
                 fileIcon={
                   <img
                     className="h-4 w-4"
@@ -213,7 +213,6 @@ export function Skills() {
               >
                 <p>digitalocean.config</p>
               </File>
-
             </Folder>
 
             <Folder element="Bots" value="6">

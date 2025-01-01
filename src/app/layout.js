@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className  }>{children}</body>
     </html>
   );
 }
