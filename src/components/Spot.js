@@ -25,7 +25,7 @@ export function SpotlightPreview() {
       <div className="p-4 max-w-7xl mx-auto relative z-10 w-full pt-20 md:pt-0 backdrop-blur-sm">
         <div className="flex justify-center mt-4 ">
           <Image
-            src="https://media.licdn.com/dms/image/v2/D4D03AQE1EuBA4SMg1g/profile-displayphoto-shrink_400_400/B4DZQCLrv8HYAg-/0/1735203406092?e=1741219200&v=beta&t=dhzH0_y--942CeoNA_ZMGnoSRnkvOrYQmJsgCUDVAa0"
+            src="https://media.licdn.com/dms/image/v2/D4D03AQFIkAHICJTVYw/profile-displayphoto-shrink_800_800/B4DZQhkEXAGkAc-/0/1735729938543?e=1741219200&v=beta&t=N1Vbujx_p42Fg21eHbJhU92Y0J6bfH3ID3VBTcHwI8w"
             alt="Logo"
             height="100"
             width="100"
@@ -46,7 +46,7 @@ export function SpotlightPreview() {
         </p> */}
         <div className="flex justify-center gap-4 mt-4">
           <ConfettiButton
-          className="p-4 bg-transparent hover:bg-transparent"
+            className="p-4 bg-transparent hover:bg-transparent"
             options={{
               get angle() {
                 return Math.random() * 360;

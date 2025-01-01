@@ -7,6 +7,8 @@ import Skills from "@/components/Skills";
 import { DockDemo } from "@/components/Dock";
 import Projects from "@/components/Projects";
 import OurWork from "@/components/StartUps";
+import AnimatedCursor from "react-animated-cursor";
+
 export default function page() {
   return (
     <div className="relative overflow-hidden">
@@ -32,6 +34,18 @@ export default function page() {
       <div className="fixed bottom-0 left-0 right-0">
         <DockDemo />
       </div>
+
+      <AnimatedCursor
+        color="222,222,222"
+        innerSize={10}
+        outerSize={40}
+        innerScale={1}
+        outerScale={1.7}
+        outerAlpha={0.2}
+        outerStyle={{
+          mixBlendMode: "donut",
+        }}
+      />
     </div>
   );
 }
