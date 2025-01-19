@@ -1,20 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  IconTerminal2,
-  IconEaseInOut,
-  IconCurrencyDollar,
-  IconCloud,
-  IconRouteAltLeft,
-  IconHelp,
-  IconBorderStyle2,
-  IconAdjustmentsBolt,
-  IconSearch,
-  IconMusic,
-  IconArticle,
-  IconHeart,
-  IconBuildingSkyscraper,
-} from "@tabler/icons-react";
+import { IconBuildingSkyscraper } from "@tabler/icons-react";
 
 const startups = [
   {

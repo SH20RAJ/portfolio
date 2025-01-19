@@ -99,6 +99,17 @@ module.exports = {
   				'100%': {
   					'background-position': '200%'
   				}
+  			},
+  			'pulse-slow': {
+  				'0%, 100%': {
+  					transform: 'translateX(-100%)'
+  				},
+  				'50%': {
+  					transform: 'translateX(100%)'
+  				}
+  			},
+  			animation: {
+  				'pulse-slow': 'pulse-slow 3s ease-in-out infinite'
   			}
   		},
   		animation: {
