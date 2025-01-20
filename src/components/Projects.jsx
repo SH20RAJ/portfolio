@@ -43,7 +43,7 @@ const projects = [
       "https://1.bp.blogspot.com/-MXdsGGbh59A/X-cM2B2eQ6I/AAAAAAAAAZU/KLEP-6BI85gMXR-7NjBWIdxnCKyIaNzbACLcBGAsYHQ/w640-h361/sopplayer.JPG",
     technologies: ["JavaScript", "HTML5", "CSS3"],
     github: "https://github.com/SH20RAJ/Sopplayer",
-    demo: "https://sopplayer.sh20raj.com",
+    demo: "https://sh20raj.github.io/Sopplayer/",
     icon: <IconTerminal2 className="w-6 h-6" />,
   },
   {

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import HyperText from "./ui/hyper-text";
 import { ConfettiButton } from "./ui/confetti";
+import { Button } from "./ui/button";
+import { User2 } from "lucide-react";
 
 export function SpotlightPreview() {
   return (
@@ -44,7 +46,7 @@ export function SpotlightPreview() {
         {/* <p className="mt-4 font-normal text-base text-neutral-500 max-w-lg text-center mx-auto">
           This website is under <span className="text-neutral-300">construction</span>.
         </p> */}
-        <div className="flex justify-center gap-4 mt-4">
+        <div className="flex justify-center items-center gap-2 mt-4">
           <ConfettiButton
             className="p-4 bg-transparent hover:bg-transparent"
             options={{
@@ -58,9 +60,18 @@ export function SpotlightPreview() {
               className=" p-4"
               href={"https://www.linkedin.com/in/sh20raj/"}
             >
-              <Button2 className=" bg-fuchsia-400 ml-10"> Connect</Button2>
+              <Button2 className=" bg-fuchsia-400 "> Connect</Button2>
             </Link>
           </ConfettiButton>
+
+ 
+            <Link
+              className=" p-4"
+              href={"/solutions"}
+            >
+              <Button variant="outline" className="  rounded-lg "> <User2 className="mr-2 h-4 w-4" /> Solutions</Button>
+            </Link>
+
         </div>
       </div>
     </div>
