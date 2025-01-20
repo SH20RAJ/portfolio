@@ -57,7 +57,7 @@ export function SpotlightPreview() {
           >
             {" "}
             <Link
-              className=" p-4"
+              className=" p-4 cursor-auto"
               href={"https://www.linkedin.com/in/sh20raj/"}
             >
               <Button2 className=" bg-fuchsia-400 "> Connect</Button2>
@@ -66,7 +66,7 @@ export function SpotlightPreview() {
 
  
             <Link
-              className=" p-4"
+              className=" p-4 cursor-auto"
               href={"/solutions"}
             >
               <Button variant="outline" className="  rounded-lg "> <User2 className="mr-2 h-4 w-4" /> Solutions</Button>
