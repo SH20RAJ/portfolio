@@ -8,12 +8,111 @@ import { FaGithub, FaExternalLinkAlt, FaShoppingCart } from 'react-icons/fa';
 import { IconArticle, IconEaseInOut, IconTerminal2 } from '@tabler/icons-react';
 
 const projects = [
-  // ... (projects array remains unchanged)
+  {
+    id: 1,
+    title: "CoolShade",
+    description:
+      "Protect Nurture Accessible our heritage and culture | SIH Project",
+    image: "https://i.imgur.com/Ug93rCx.png",
+    technologies: ["React", "Node.js", "MongoDB"],
+    github: "https://github.com/SH20RAJ/CoolShade",
+    demo: "https://shade.cool",
+    icon: <IconTerminal2 className="w-6 h-6" />,
+    category: "full-stack",
+    price: 49.99,
+    features: ["Responsive design", "API integration", "User authentication"],
+  },
+  {
+    id: 2,
+    title: "Pics",
+    description: "Pics - Image Hosting Made Easy",
+    image: "https://i.imgur.com/cJpLL1c.png",
+    technologies: ["JavaScript", "HTML5", "CSS3"],
+    github: "https://github.com/SH20RAJ/Pics",
+    demo: "https://pics.shade.cool",
+    icon: <IconEaseInOut className="w-6 h-6" />,
+    category: "landing-pages",
+    price: 29.99,
+    features: ["Fast loading", "SEO optimized", "Custom domains"],
+  },
+  {
+    id: 3,
+    title: "Sopplayer",
+    description: "Sopplayer - HTML5 Stylish Video Player",
+    image:
+      "https://1.bp.blogspot.com/-MXdsGGbh59A/X-cM2B2eQ6I/AAAAAAAAAZU/KLEP-6BI85gMXR-7NjBWIdxnCKyIaNzbACLcBGAsYHQ/w640-h361/sopplayer.JPG",
+    technologies: ["JavaScript", "HTML5", "CSS3"],
+    github: "https://github.com/SH20RAJ/Sopplayer",
+    demo: "https://sh20raj.github.io/Sopplayer/",
+    icon: <IconTerminal2 className="w-6 h-6" />,
+    category: "js-frameworks",
+    price: 39.99,
+    features: ["Customizable UI", "Multiple video formats", "Playlist support"],
+  },
+  {
+    id: 4,
+    title: "BitSyll",
+    description:
+      "Welcome to the BIT Mesra Study Repository! This repository is designed to provide a centralized location for students to access study materials, resources, and collaborate on projects.",
+    image: "https://bitsyll.pages.dev/BITSYLL.png",
+    technologies: ["NextJS", "ShadCN", "Tailwind CSS"],
+    github: "https://github.com/SH20RAJ/bitsyll",
+    demo: "https://bitsyll.pages.dev",
+    icon: <IconEaseInOut className="w-6 h-6" />,
+    category: "full-stack",
+    price: 59.99,
+    features: [
+      "Collaborative editing",
+      "Resource sharing",
+      "Discussion forums",
+    ],
+  },
+  {
+    id: 5,
+    title: "OctoPress",
+    description:
+      "Transform your GitHub Issues into a powerful CMS for your blog! Built with Next.js, featuring automatic SEO optimization, server-side rendering, and flexible deployment options.",
+    image:
+      "https://repository-images.githubusercontent.com/908621796/74f23302-57dd-4d04-966c-8fcb678be778",
+    technologies: ["Next.js", "GitHub API", "SSR", "SEO"],
+    github: "https://github.com/SH20RAJ/OctoPress",
+    demo: "https://octopress.netlify.app/",
+    icon: <IconArticle className="w-6 h-6" />,
+    category: "js-frameworks",
+    price: 69.99,
+    features: ["GitHub integration", "Automatic SEO", "Customizable themes"],
+  },
 ];
 
 const categories = [
-  // ... (categories array remains unchanged)
+  {
+    id: "all",
+    label: "All",
+    description: "View all projects across categories",
+  },
+  {
+    id: "landing-pages",
+    label: "Landing Pages",
+    description: "Beautiful and conversion-focused landing pages",
+  },
+  {
+    id: "full-stack",
+    label: "Full Stack",
+    description: "Complete web applications with backend integration",
+  },
+  {
+    id: "e-commerce",
+    label: "E-commerce",
+    description: "Online store templates and solutions",
+  },
+  {
+    id: "js-frameworks",
+    label: "JS Frameworks",
+    description: "Projects built with popular JavaScript frameworks",
+  },
 ];
+
+
 
 function SearchParamsWrapper({ children }) {
   const [mounted, setMounted] = useState(false);
