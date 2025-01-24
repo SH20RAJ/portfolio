@@ -114,7 +114,7 @@ export function AnimeNavBar({
                 {isActive && (
                   <motion.div
                     layoutId="anime-mascot"
-                    className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none"
+                    className="absolute -top-12 left-1/2 -translate-x-1/2 "
                     initial={false}
                     transition={{
                       type: "spring",

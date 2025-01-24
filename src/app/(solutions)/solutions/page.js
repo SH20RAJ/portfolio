@@ -164,6 +164,8 @@ export default function SolutionsPage() {
           >
             Discover premium templates and custom solutions for your next web project
           </motion.p>
+
+ 
         </div>
       </div>
 
