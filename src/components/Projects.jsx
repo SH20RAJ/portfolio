@@ -4,16 +4,7 @@ import {
   IconExternalLink,
   IconTerminal2,
   IconEaseInOut,
-  IconCurrencyDollar,
-  IconCloud,
-  IconRouteAltLeft,
-  IconHelp,
-  IconBorderStyle2,
-  IconAdjustmentsBolt,
-  IconSearch,
-  IconMusic,
   IconArticle,
-  IconHeart,
 } from "@tabler/icons-react";
 
 const projects = [
