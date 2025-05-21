@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import SectionContainer from '../ui/SectionContainer';
 import { FiExternalLink, FiGithub, FiArrowRight } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -155,10 +156,12 @@ const ProjectsSection = () => {
               <div className="h-48 bg-muted flex items-center justify-center">
                 {project.image ? (
                   <div className="relative w-full h-full">
-                    <img 
+                    <Image 
                       src={project.image.startsWith('/') ? project.image : `/${project.image}`} 
                       alt={project.name} 
                       className="w-full h-full object-cover"
+                      width={600}
+                      height={400}
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = `https://placehold.co/600x400/3a86ff/FFFFFF?text=${encodeURIComponent(project.name)}`;

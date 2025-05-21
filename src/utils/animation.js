@@ -216,4 +216,12 @@ export const ParallaxScroll = ({
   );
 };
 
-export default { useIntersectionObserver, RevealOnScroll, StaggerChildren, ParallaxScroll };
+// Create a named object for export
+const animationUtils = { 
+  useIntersectionObserver, 
+  RevealOnScroll, 
+  StaggerChildren, 
+  ParallaxScroll 
+};
+
+export default animationUtils;

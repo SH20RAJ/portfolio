@@ -1,7 +1,6 @@
-"use client";
-
 import Link from 'next/link';
-import { FiHome, FiArrowLeft } from 'react-icons/fi';
+import { FiHome } from 'react-icons/fi';
+import GoBackButton from '@/components/ui/GoBackButton';
 
 export default function NotFound() {
   return (
@@ -20,13 +19,7 @@ export default function NotFound() {
             <FiHome size={18} />
             Back to Home
           </Link>
-          <button 
-            onClick={() => window.history.back()}
-            className="flex items-center justify-center gap-2 border border-border px-6 py-3 rounded-lg hover:bg-muted transition-colors"
-          >
-            <FiArrowLeft size={18} />
-            Go Back
-          </button>
+          <GoBackButton />
         </div>
       </div>
     </div>
