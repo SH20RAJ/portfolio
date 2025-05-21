@@ -32,6 +32,7 @@ I build thoughtful digital experiences and powerful tools that merge creativity 
 - [Twitter](https://x.com/SH20RAJ/)
 
 - [Dev Community](https://dev.to/sh20raj)
+- github - https://github.com/sh20raj
 
 
 
@@ -231,6 +232,13 @@ https://github.com/SH20RAJ/AppPages
     discord: "https://www.svgrepo.com/show/331368/discord-v2.svg",
     whatsapp: "https://www.svgrepo.com/show/475692/whatsapp-color.svg",
   };
+
+
+
+
+---
+
+profile photo - https://media.licdn.com/dms/image/v2/D4D03AQFIkAHICJTVYw/profile-displayphoto-shrink_800_800/B4DZQhkEXAGkAc-/0/1735729938543?e=1753315200&v=beta&t=GptGGwd6YA17Nn8fyoUd50mp-7axqaOEELY-Z7kfOSA
 
 
 
