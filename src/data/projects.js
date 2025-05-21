@@ -46,12 +46,12 @@ export const projectsData = [
   },
   {
     name: "PlayTube",
-    description: "Video sharing and streaming platform",
+    description: "A full-featured YouTube clone with video upload and playback, user authentication, comments, likes, subscriptions, search, trending videos, and user profiles powered by a PHP/MySQL backend.",
     category: "fullstack",
-    tech: ["PHP", "MySQL", "JavaScript"],
+    tech: ["PHP", "MySQL", "JavaScript", "FFmpeg", "CSS"],
     github: "https://github.com/SH20RAJ/playtube",
-    live: null,
-    image: "/projects/playtube.jpg"
+    live: "https://playtube.sh20raj.com",
+    image: "https://socialify.git.ci/SH20RAJ/playtube/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Scaleboard",
