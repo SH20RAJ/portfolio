@@ -82,21 +82,21 @@ export const projectsData = [
   },
   {
     name: "Article",
-    description: "Content management system for writers and bloggers",
+    description: "A free open-source blogging platform that allows writers to publish articles on various genres while automating classification, SEO, audience management, and outreach to help content creators focus on writing.",
     category: "fullstack",
-    tech: ["Next.js", "Prisma", "PostgreSQL"],
+    tech: ["Next.js", "Prisma", "PostgreSQL", "JavaScript", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/article",
-    live: null,
-    image: "/projects/article.jpg"
+    live: "https://article.shade.cool/",
+    image: "https://socialify.git.ci/SH20RAJ/article/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Multiversal",
-    description: "Multi-platform social media management tool",
+    description: "A creative platform where poets, writers, musicians, and storytellers can share diverse content including poems, stories, songs, and scripts, complete with user profiles and social interaction features.",
     category: "fullstack",
-    tech: ["React", "Redux", "Various APIs"],
+    tech: ["Next.js", "Prisma", "MySQL", "Tailwind CSS", "JavaScript"],
     github: "https://github.com/SH20RAJ/Multiversal",
-    live: null,
-    image: "/projects/multiversal.jpg"
+    live: "https://multiversal.pages.dev/",
+    image: "https://socialify.git.ci/SH20RAJ/Multiversal/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // Websites
@@ -120,30 +120,30 @@ export const projectsData = [
   },
   {
     name: "GitProxy",
-    description: "GitHub API proxy and wrapper",
+    description: "A service that allows downloading GitHub repositories, releases, and files without revealing the actual repository links, providing an additional layer of security and privacy for distributing code.",
     category: "websites",
-    tech: ["Node.js", "Express", "GitHub API"],
+    tech: ["JavaScript", "Node.js", "GitHub API", "Encryption", "Cloudflare Pages"],
     github: "https://github.com/SH20RAJ/gitproxy",
-    live: null,
-    image: "/projects/gitproxy.jpg"
+    live: "https://gitproxy.pages.dev",
+    image: "https://socialify.git.ci/SH20RAJ/gitproxy/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Image BG Remover",
-    description: "Background removal tool for images",
+    description: "A web application that removes backgrounds from images using OpenCV's segmentation methods, featuring an intuitive interface for uploading, processing, and downloading images with transparent backgrounds.",
     category: "websites",
-    tech: ["JavaScript", "Canvas API", "ML"],
+    tech: ["Python", "OpenCV", "Streamlit", "NumPy", "Image Processing"],
     github: "https://github.com/SH20RAJ/image-bg-remover",
-    live: null,
-    image: "/projects/image-bg-remover.jpg"
+    live: "https://bg-rem.streamlit.app/",
+    image: "https://socialify.git.ci/SH20RAJ/image-bg-remover/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "DevArt React",
-    description: "Creative coding platform for developers",
+    description: "A modern blog and content platform built with React that integrates with the Dev.to API to display programming articles and tutorials in a clean, responsive interface.",
     category: "websites",
-    tech: ["React", "Canvas API", "WebGL"],
+    tech: ["React", "Vite", "Dev.to API", "JavaScript", "CSS"],
     github: "https://github.com/SH20RAJ/devart-react",
-    live: null,
-    image: "/projects/devart-react.jpg"
+    live: "https://devart-react.pages.dev/",
+    image: "https://socialify.git.ci/SH20RAJ/devart-react/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Waitlist.js",
