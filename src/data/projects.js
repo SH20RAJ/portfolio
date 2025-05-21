@@ -55,30 +55,30 @@ export const projectsData = [
   },
   {
     name: "Scaleboard",
-    description: "Analytics dashboard with customizable widgets",
+    description: "An all-in-one platform for indie hackers and startup founders to showcase projects, track metrics with verified analytics, and build in public with full transparency and customization options.",
     category: "fullstack",
-    tech: ["React", "Chart.js", "Firebase"],
+    tech: ["Next.js", "Tailwind CSS", "Node.js", "PostgreSQL", "Stripe API"],
     github: "https://github.com/SH20RAJ/scaleboard",
-    live: null,
-    image: "/projects/scaleboard.jpg"
+    live: "https://scaleboard.org",
+    image: "https://socialify.git.ci/SH20RAJ/scaleboard/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "AayeChup",
-    description: "Chat application with focus on privacy",
+    description: "An AI voice conversation platform that enables natural voice interactions with multiple AI personalities, creating an experience similar to a phone call with high-quality voice processing and real-time responses.",
     category: "fullstack",
-    tech: ["React", "Socket.io", "Express"],
+    tech: ["Next.js", "TypeScript", "OpenAI Whisper", "ElevenLabs", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/aayechup",
-    live: null,
-    image: "/projects/aayechup.jpg"
+    live: "https://aayechup.shade.cool",
+    image: "https://socialify.git.ci/SH20RAJ/aayechup/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "CreoYT",
-    description: "YouTube video creation tools and analytics",
+    description: "An all-in-one platform for YouTube creators with AI-powered tools for channel analysis, content research, thumbnail creation, competitor tracking, and video repurposing to optimize channel growth.",
     category: "fullstack",
-    tech: ["Vue.js", "YouTube API", "Node.js"],
+    tech: ["React", "Next.js", "YouTube API", "OpenAI", "MongoDB"],
     github: "https://github.com/SH20RAJ/creoyt",
-    live: null,
-    image: "/projects/creoyt.jpg"
+    live: "https://creoyt.netlify.app/",
+    image: "https://socialify.git.ci/SH20RAJ/creoyt/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Article",
@@ -196,12 +196,12 @@ export const projectsData = [
   },
   {
     name: "SoundWave",
-    description: "Audio visualization and manipulation library",
+    description: "A modern and customizable HTML5 audio player library with advanced features including waveform visualization, volume/speed controls, loop functionality, and theming support for creating sleek audio experiences.",
     category: "jsframeworks",
-    tech: ["JavaScript", "Web Audio API", "Canvas"],
+    tech: ["JavaScript", "Web Audio API", "HTML5", "CSS"],
     github: "https://github.com/SH20RAJ/soundwave",
-    live: null,
-    image: "/projects/soundwave.jpg"
+    live: "https://sh20raj.github.io/soundwave/",
+    image: "https://socialify.git.ci/SH20RAJ/soundwave/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Vibly",
