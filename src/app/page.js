@@ -17,13 +17,14 @@ export default function Home() {
       <Loader />
       <Header />
       <main className="flex flex-col min-h-screen">
-        <HeroSection />
+        <div className='-mt-20'>
+        <HeroSection /></div>
         <AboutSection />
         {/* <ExperienceSection /> */}
         <ProjectsSection />
         <SkillsSection />
         <BlogSection />
-        <ContactSection />
+        {/* <ContactSection /> */}
       </main>
       <Footer />
       <BackToTop />

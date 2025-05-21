@@ -218,7 +218,7 @@ const ProjectsSection = () => {
                     >
                       <Link 
                         href={`/projects?id=${encodeURIComponent(project.name)}`}
-                        className="flex items-center gap-2 bg-white text-primary font-medium py-2 px-4 rounded-full transform transition-transform duration-300 hover:scale-105"
+                        className="flex items-center gap-2 bg-white text-black font-medium py-2 px-4 rounded-full transform transition-transform duration-300 hover:scale-105"
                       >
                         <FiEye /> View Details
                       </Link>

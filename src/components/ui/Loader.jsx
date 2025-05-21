@@ -174,7 +174,7 @@ const Loader = () => {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 1 }}
                   >
-                    SR
+                    Sh
                   </motion.text>
                   
                   <defs>

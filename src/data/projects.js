@@ -19,30 +19,30 @@ export const projectsData = [
   // Full-Stack Websites
   {
     name: "NotesFlow",
-    description: "A collaborative note-taking application with real-time updates",
+    description: "A privacy-focused note-taking application that lets you create, edit, and manage notes with a beautiful interface. Features include local storage, import/export capabilities, dark mode, and works offline.",
     category: "fullstack",
-    tech: ["Next.js", "React", "MongoDB"],
+    tech: ["Next.js", "React", "LocalStorage", "PWA"],
     github: "https://github.com/SH20RAJ/notesflow",
-    live: null,
-    image: "/projects/notesflow.jpg"
+    live: "https://notesflow.pages.dev",
+    image: "https://socialify.git.ci/SH20RAJ/notesflow/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Reflecto",
-    description: "A journaling platform with mood analysis and insights",
+    description: "A minimal yet smart daily reflection app designed for busy users. Features AI-curated questions, voice journaling, mood tracking, and personalized insights that evolve with you over time.",
     category: "fullstack",
-    tech: ["React", "Node.js", "Express"],
+    tech: ["React", "Next.js", "AI", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/reflecto",
-    live: null,
-    image: "/projects/reflecto.jpg"
+    live: "https://reflecto.netlifyy.app/",
+    image: "https://socialify.git.ci/SH20RAJ/reflecto/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "SketchFlow",
-    description: "Collaborative digital whiteboard for brainstorming",
+    description: "A powerful collaborative whiteboard platform designed for real-time brainstorming and visual collaboration. Features include customizable templates, recording capabilities, AI assistance, and integration with productivity tools.",
     category: "fullstack",
-    tech: ["JavaScript", "Canvas API", "WebSockets"],
+    tech: ["React", "Canvas API", "WebSockets", "Node.js", "MongoDB"],
     github: "https://github.com/SH20RAJ/sketchflow",
-    live: null,
-    image: "/projects/sketchflow.jpg"
+    live: "https://sketchflow.space",
+    image: "https://socialify.git.ci/SH20RAJ/sketchflow/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "PlayTube",
@@ -102,21 +102,21 @@ export const projectsData = [
   // Websites
   {
     name: "Bitsyll",
-    description: "URL shortener with analytics",
+    description: "A comprehensive platform for BIT Mesra students that provides centralized access to study materials, lecture notes, assignments, and previous year question papers to enhance the learning experience.",
     category: "websites",
-    tech: ["JavaScript", "API", "CSS"],
+    tech: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
     github: "https://github.com/SH20RAJ/bitsyll",
-    live: null,
-    image: "/projects/bitsyll.jpg"
+    live: "https://bitsyll.pages.dev/",
+    image: "https://socialify.git.ci/SH20RAJ/bitsyll/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "PeerDrop",
-    description: "Peer-to-peer file sharing web application",
+    description: "A privacy-focused, peer-to-peer file sharing app that enables secure, serverless file transfers. Files are end-to-end encrypted via WebRTC and never touch any third-party server.",
     category: "websites",
-    tech: ["WebRTC", "JavaScript", "P2P"],
+    tech: ["WebRTC", "JavaScript", "Socket.io", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/peerdrop",
-    live: null,
-    image: "/projects/peerdrop.jpg"
+    live: "https://peerdrop.sh20raj.com/",
+    image: "https://socialify.git.ci/SH20RAJ/peerdrop/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "GitProxy",
@@ -187,12 +187,12 @@ export const projectsData = [
   // JS Frameworks
   {
     name: "SopPlayer",
-    description: "Advanced HTML5 video player framework",
+    description: "A sleek and feature-rich HTML5 video player that enhances the visual experience of videos on web pages. Offers compatibility across devices and browsers with intuitive controls and customizable options.",
     category: "jsframeworks",
-    tech: ["JavaScript", "HTML5 Video", "CSS"],
+    tech: ["JavaScript", "HTML5 Video", "CSS", "Media API"],
     github: "https://github.com/SH20RAJ/Sopplayer",
-    live: null,
-    image: "/projects/sopplayer.jpg"
+    live: "https://sh20raj.github.io/Sopplayer/",
+    image: "https://socialify.git.ci/SH20RAJ/Sopplayer/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "SoundWave",
@@ -223,21 +223,21 @@ export const projectsData = [
   },
   {
     name: "SteamLit",
-    description: "UI component library for web applications",
+    description: "A lightweight Node.js framework for building reactive, data-driven web applications with minimal effort. Features include reactive components, easy API, data visualization tools, and customizable extensions.",
     category: "jsframeworks",
-    tech: ["JavaScript", "CSS", "Web Components"],
+    tech: ["JavaScript", "Node.js", "Web Components", "Data Visualization"],
     github: "https://github.com/SH20RAJ/steamlit",
-    live: null,
-    image: "/projects/steamlit.jpg"
+    live: "https://sh20raj.github.io/steamlit/",
+    image: "https://socialify.git.ci/SH20RAJ/steamlit/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "OctoPress",
-    description: "Static site generator for blogging",
+    description: "A modern blogging platform that turns GitHub Issues into a CMS for your blog, featuring a beautiful UI with dark mode, SEO optimization, and customizable settings through a simple configuration file.",
     category: "jsframeworks",
-    tech: ["JavaScript", "Markdown", "Static Sites"],
+    tech: ["Next.js", "GitHub API", "React", "JavaScript", "CSS"],
     github: "https://github.com/SH20RAJ/OctoPress",
-    live: null,
-    image: "/projects/octopress.jpg"
+    live: "https://octopress.netlify.app",
+    image: "https://socialify.git.ci/SH20RAJ/OctoPress/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "YouTube Remote Uploader",
@@ -272,12 +272,12 @@ export const projectsData = [
   // VS Code Extensions
   {
     name: "CodeSeek",
-    description: "Code search and navigation extension for VS Code",
+    description: "AI-powered coding assistant for VS Code with DeepSeek integration. Features intelligent code completion, chat assistance, name suggestions, and README generation for a supercharged coding workflow.",
     category: "vscode",
-    tech: ["TypeScript", "VS Code API"],
+    tech: ["JavaScript", "VS Code API", "DeepSeek AI", "Extensions"],
     github: "https://github.com/SH20RAJ/CodeSeek",
-    live: null,
-    image: "/projects/codeseek.jpg"
+    live: "https://marketplace.visualstudio.com/items?itemName=sh20raj.codeseek-shade",
+    image: "https://socialify.git.ci/SH20RAJ/CodeSeek/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // Chrome Extensions
@@ -350,12 +350,12 @@ export const projectsData = [
   // Mobile Apps
   {
     name: "AuraAI",
-    description: "AI-powered personal assistant mobile app",
+    description: "A next-generation smart keyboard app built with React Native and Expo, featuring AI-powered text prediction, multiple themes, customization options, and haptic feedback for an enhanced typing experience.",
     category: "mobile",
-    tech: ["React Native", "AI", "Mobile Development"],
+    tech: ["React Native", "Expo", "AI", "TypeScript"],
     github: "https://github.com/SH20RAJ/AuraAI",
-    live: null,
-    image: "/projects/auraai.jpg"
+    live: "https://sh20raj.github.io/AuraAI/",
+    image: "https://socialify.git.ci/SH20RAJ/AuraAI/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // Scraping & Reverse Engineering

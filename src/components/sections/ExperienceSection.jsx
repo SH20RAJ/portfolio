@@ -1,18 +1,28 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import SectionContainer from '../ui/SectionContainer';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { FiBriefcase, FiCalendar, FiMapPin, FiChevronRight, FiExternalLink } from 'react-icons/fi';
+import { FiBriefcase, FiCalendar, FiMapPin, FiChevronRight, FiExternalLink, FiArrowRight } from 'react-icons/fi';
 import { useIntersectionObserver, RevealOnScroll } from '@/utils/animation';
 
 const ExperienceSection = () => {
   const [activeExperience, setActiveExperience] = useState(0);
   const [isHovering, setIsHovering] = useState(null);
+  const [animateTimeline, setAnimateTimeline] = useState(false);
   
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const timelineRef = useRef(null);
+  const timelineInView = useInView(timelineRef, { once: true, amount: 0.2 });
+  
+  useEffect(() => {
+    if (timelineInView) {
+      setTimeout(() => {
+        setAnimateTimeline(true);
+      }, 500);
+    }
+  }, [timelineInView]);
   
   const experiences = [
     {
@@ -99,197 +109,239 @@ const ExperienceSection = () => {
       opacity: 1,
       x: 0,
       transition: {
-        delay: custom * 0.1,
         type: "spring",
         stiffness: 100,
-        damping: 15
+        damping: 15,
+        delay: custom * 0.1,
       }
     })
   };
-
+  
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
+    inactive: { 
       y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15
-      }
+      opacity: 0.7,
+      scale: 0.97,
+      backgroundColor: "var(--muted)",
+      transition: { duration: 0.3 }
     },
-    exit: {
-      opacity: 0,
-      y: -20,
-      transition: {
-        duration: 0.2
-      }
+    active: { 
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      backgroundColor: "rgba(var(--primary-rgb), 0.05)",
+      transition: { type: "spring", stiffness: 200, damping: 15 }
+    },
+    hover: {
+      y: -5,
+      transition: { duration: 0.2 }
     }
   };
 
   return (
     <SectionContainer id="experience" ref={sectionRef}>
-      <RevealOnScroll animation="fade-down">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block">
-            My Experience
-          </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
-            A journey through my professional career and the roles that have shaped my expertise
-          </p>
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block">
+          Work Experience
+        </h2>
+        <p className="text-foreground/70 max-w-2xl mx-auto">
+          A timeline of my professional journey and the companies I've had the privilege to work with.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 relative">
+        {/* Timeline line */}
+        <div className="hidden lg:block lg:col-span-4 relative">
+          <div ref={timelineRef} className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-[2px] bg-border">
+            <motion.div 
+              className="absolute left-0 top-0 bottom-0 w-full bg-gradient-to-t from-transparent via-primary to-transparent"
+              initial={{ height: 0 }}
+              animate={animateTimeline ? { height: '100%' } : { height: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          </div>
         </div>
-      </RevealOnScroll>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-        <RevealOnScroll animation="fade-right" delay={0.2} className="lg:col-span-4">
-          <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-4 mb-8 lg:mb-0 relative">
-            {/* Timeline line */}
-            <div className="absolute left-4 lg:left-7 w-0.5 h-full bg-border hidden lg:block">
-              <motion.div
-                ref={timelineRef}
-                variants={timelineVariants}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                className="w-full bg-primary origin-top"
-              />
-            </div>
-
+        
+        {/* Experience Tabs for Mobile */}
+        <div className="lg:hidden mb-8">
+          <div className="flex overflow-x-auto pb-4 gap-3 no-scrollbar">
             {experiences.map((experience, index) => (
               <motion.button
-                key={experience.company}
-                custom={index}
-                variants={itemVariants}
-                whileHover={{ x: 5 }}
+                key={index}
                 onClick={() => setActiveExperience(index)}
-                onMouseEnter={() => setIsHovering(index)}
-                onMouseLeave={() => setIsHovering(null)}
-                className={`relative flex items-center text-left px-4 py-3 rounded-lg transition-all whitespace-nowrap lg:whitespace-normal w-max lg:w-full
-                  ${activeExperience === index 
-                    ? 'bg-primary/10 text-primary shadow-md border border-primary/30' 
-                    : 'hover:bg-card border border-border/50'
-                  }`}
+                variants={cardVariants}
+                initial="inactive"
+                animate={activeExperience === index ? "active" : "inactive"}
+                whileHover="hover"
+                whileTap={{ scale: 0.95 }}
+                className={`px-5 py-3 rounded-lg text-sm whitespace-nowrap ${
+                  activeExperience === index 
+                    ? "font-medium" 
+                    : "font-normal"
+                }`}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-4 top-1/2 transform -translate-y-1/2 -translate-x-8 hidden lg:block">
-                  <div className={`w-4 h-4 rounded-full border-2 transition-all duration-300 
-                    ${activeExperience === index 
-                      ? 'border-primary bg-primary/30 scale-125' 
-                      : isHovering === index 
-                        ? 'border-primary/70 bg-primary/10'
-                        : 'border-border bg-background'
-                    }`}
-                  />
-                </div>
-                
-                <div className="p-2 rounded-full bg-card mr-3">
-                  <FiBriefcase size={18} className={activeExperience === index ? 'text-primary' : 'text-foreground/70'} />
-                </div>
-                
-                <div>
-                  <h3 className="font-medium">{experience.company}</h3>
-                  <p className="text-sm text-foreground/60">{experience.period}</p>
-                </div>
-                
-                <FiChevronRight size={18} className={`ml-2 transition-all duration-300
-                  ${activeExperience === index 
-                    ? 'text-primary rotate-90' 
-                    : 'text-foreground/40 lg:group-hover:translate-x-1'
-                  }`}
-                />
+                {experience.company}
               </motion.button>
             ))}
           </div>
-        </RevealOnScroll>
-
-        <RevealOnScroll animation="fade-left" delay={0.4} className="lg:col-span-8">
+        </div>
+        
+        {/* Experience List for Desktop */}
+        <div className="hidden lg:block lg:col-span-4">
+          <div className="sticky top-24 space-y-4">
+            {experiences.map((experience, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setActiveExperience(index)}
+                onMouseEnter={() => setIsHovering(index)}
+                onMouseLeave={() => setIsHovering(null)}
+                custom={index}
+                variants={itemVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                className={`relative w-full text-left p-4 rounded-lg transition-all ${
+                  activeExperience === index 
+                    ? "bg-primary/5 border-l-4 border-primary" 
+                    : "bg-card border-l-4 border-transparent hover:border-primary/30 hover:bg-primary/5"
+                }`}
+              >
+                {/* Timeline dot */}
+                <div className={`absolute left-0 top-1/2 transform -translate-x-[calc(100%+8px)] -translate-y-1/2 w-4 h-4 rounded-full border-2 transition-all ${
+                  activeExperience === index 
+                    ? "border-primary bg-primary/30" 
+                    : "border-border bg-card"
+                }`}>
+                  <motion.div 
+                    className="absolute inset-[3px] rounded-full bg-primary"
+                    initial={{ scale: 0 }}
+                    animate={activeExperience === index ? { scale: 1 } : { scale: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+                
+                <h3 className={`font-bold transition-colors ${
+                  activeExperience === index ? "text-primary" : "text-foreground"
+                }`}>
+                  {experience.company}
+                </h3>
+                <p className="text-foreground/70 text-sm">
+                  {experience.period}
+                </p>
+                
+                <motion.div 
+                  className="absolute right-4 text-primary"
+                  initial={{ opacity: 0, x: -5 }}
+                  animate={activeExperience === index || isHovering === index ? { opacity: 1, x: 0 } : { opacity: 0, x: -5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FiArrowRight />
+                </motion.div>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+        
+        {/* Experience Details */}
+        <div className="lg:col-span-8">
           <AnimatePresence mode="wait">
             <motion.div
-              key={experiences[activeExperience].title}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="bg-card rounded-xl border border-border/50 p-6 md:p-8 shadow-lg"
+              key={activeExperience}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ 
+                duration: 0.5,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              className="bg-card border border-border rounded-xl p-8 shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all"
             >
-              <div className="flex flex-wrap justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-1">{experiences[activeExperience].title}</h3>
-                  <h4 className="text-xl text-primary mb-2">{experiences[activeExperience].company}</h4>
-                  
-                  <div className="flex flex-wrap items-center gap-4 text-foreground/70 mb-6">
-                    <div className="flex items-center">
-                      <FiCalendar size={16} className="mr-2" />
-                      <span>{experiences[activeExperience].period}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <FiMapPin size={16} className="mr-2" />
-                      <span>{experiences[activeExperience].location}</span>
-                    </div>
+              <div className="mb-8">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-primary/90 to-secondary/90 bg-clip-text text-transparent">
+                    {experiences[activeExperience].title}
+                  </h3>
+                  {experiences[activeExperience].link && (
+                    <a 
+                      href={experiences[activeExperience].link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground/50 hover:text-primary transition-colors"
+                    >
+                      <FiExternalLink size={16} />
+                    </a>
+                  )}
+                </div>
+                
+                <div className="flex flex-wrap gap-6 mb-6">
+                  <div className="flex items-center gap-2 text-foreground/70">
+                    <FiBriefcase size={18} className="text-primary" />
+                    <span>{experiences[activeExperience].company}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-foreground/70">
+                    <FiCalendar size={18} className="text-primary" />
+                    <span>{experiences[activeExperience].period}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-foreground/70">
+                    <FiMapPin size={18} className="text-primary" />
+                    <span>{experiences[activeExperience].location}</span>
                   </div>
                 </div>
                 
-                {experiences[activeExperience].link && (
-                  <motion.a
-                    href={experiences[activeExperience].link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors"
-                  >
-                    <span className="mr-2">View Work</span>
-                    <FiExternalLink size={16} />
-                  </motion.a>
-                )}
-              </div>
-              
-              <div className="mb-6">
-                <h5 className="text-lg font-medium mb-3">Responsibilities:</h5>
-                <ul className="space-y-2">
-                  {experiences[activeExperience].description.map((item, i) => (
-                    <motion.li
-                      key={i}
+                <div className="space-y-4 mb-8">
+                  {experiences[activeExperience].description.map((item, index) => (
+                    <motion.div 
+                      key={index}
                       initial={{ opacity: 0, x: -10 }}
-                      animate={{ 
-                        opacity: 1, 
-                        x: 0,
-                        transition: { delay: 0.1 + (i * 0.1) }
-                      }}
-                      className="flex items-start"
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="flex items-start gap-3"
                     >
-                      <span className="text-primary mr-2 mt-1">•</span>
-                      <span className="text-foreground/80">{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div>
-                <h5 className="text-lg font-medium mb-3">Technologies:</h5>
-                <div className="flex flex-wrap gap-2">
-                  {experiences[activeExperience].technologies.map((tech, i) => (
-                    <motion.span
-                      key={tech}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ 
-                        opacity: 1, 
-                        scale: 1,
-                        transition: { delay: 0.2 + (i * 0.05) }
-                      }}
-                      whileHover={{ 
-                        scale: 1.05,
-                        backgroundColor: "rgba(var(--color-primary-rgb), 0.2)"
-                      }}
-                      className="bg-background px-3 py-1 rounded-full text-sm border border-border/50"
-                    >
-                      {tech}
-                    </motion.span>
+                      <div className="text-primary mt-1.5">
+                        <FiChevronRight size={14} />
+                      </div>
+                      <p className="text-foreground/80">{item}</p>
+                    </motion.div>
                   ))}
                 </div>
+                
+                <div>
+                  <h4 className="text-sm uppercase tracking-wider text-foreground/60 mb-3">Technologies Used</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {experiences[activeExperience].technologies.map((tech, index) => (
+                      <motion.span
+                        key={tech}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                        className="px-3 py-1 rounded-full bg-muted text-foreground/80 text-sm"
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
               </div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="pt-6 border-t border-border/50"
+              >
+                <p className="text-foreground/60 text-sm italic">
+                  {activeExperience < experiences.length - 1 
+                    ? `Previous Role: ${experiences[activeExperience + 1].title} at ${experiences[activeExperience + 1].company}`
+                    : `Started professional journey as ${experiences[experiences.length - 1].title}`}
+                </p>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
-        </RevealOnScroll>
+        </div>
       </div>
     </SectionContainer>
   );
