@@ -1,13 +1,16 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
-import { FiArrowLeft, FiExternalLink, FiGithub, FiSearch, FiFilter } from 'react-icons/fi';
+import { FiArrowLeft, FiExternalLink, FiGithub, FiSearch, FiFilter, FiGrid, FiList, FiSliders, FiX, FiCheck } from 'react-icons/fi';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import BackToTop from '@/components/ui/BackToTop';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+import { ProgressiveImage, LazyImage } from '@/utils/imageUtils';
+import { useIntersectionObserver, RevealOnScroll } from '@/utils/animation';
 
 // Import the same project data to maintain consistency
 import { projectsData, projectCategories } from '@/data/projects';
@@ -19,6 +22,48 @@ const ProjectsPage = () => {
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
   const [showFilters, setShowFilters] = useState(false);
   const [sortOrder, setSortOrder] = useState('newest');
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+  
+  const pageRef = useRef(null);
+  const isInView = useInView(pageRef, { once: true });
+  
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.2
+      }
+    }
+  };
+  
+  const filterVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 25
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20
+      }
+    }
+  };
 
   // Filter projects based on category and search term
   useEffect(() => {
@@ -53,297 +98,417 @@ const ProjectsPage = () => {
     setFilteredProjects(result);
   }, [activeCategory, searchTerm, sortOrder]);
 
-  // Animation variants
-  const pageVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.5 } },
-    exit: { opacity: 0, transition: { duration: 0.3 } }
-  };
+  // Page load animation effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageLoaded(true);
+    }, 300);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
-  const containerVariants = {
-    initial: { opacity: 0 },
-    animate: { 
-      opacity: 1,
-      transition: { staggerChildren: 0.05 } 
-    }
-  };
-
-  const itemVariants = {
-    initial: { y: 20, opacity: 0 },
-    animate: { 
-      y: 0, 
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100, damping: 15 }
-    }
+  // Function to render project cards
+  const renderProjectCard = (project, index) => {
+    const ProjectComponent = viewMode === 'grid' ? GridProjectCard : ListProjectCard;
+    
+    return (
+      <RevealOnScroll
+        key={project.name}
+        animation={viewMode === 'grid' ? 'zoom-in' : 'fade-up'}
+        delay={index * 0.05}
+        className="h-full"
+      >
+        <ProjectComponent project={project} />
+      </RevealOnScroll>
+    );
   };
 
   return (
-    <>
+    <motion.div
+      className="min-h-screen flex flex-col"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      ref={pageRef}
+    >
       <Header />
+      
       <motion.main
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={pageVariants}
-        className="min-h-screen pt-20 pb-12"
+        className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isPageLoaded ? "visible" : "hidden"}
       >
-        <div className="container mx-auto px-4">
-          {/* Hero section */}
-          <section className="mb-12 relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 py-16 px-6">
-            <motion.div 
-              className="absolute top-0 left-0 w-full h-full -z-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-              <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
-            </motion.div>
-
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.h1 
+        <motion.div
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Link href="/" className="flex items-center text-foreground/80 hover:text-primary transition-colors mb-6">
+            <FiArrowLeft className="mr-2" />
+            Back to Home
+          </Link>
+          
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+              <motion.h1
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary  text-blue-400 bg-clip-text"
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-3xl md:text-4xl font-bold mb-2"
               >
-                My Projects Portfolio
+                Projects Showcase
               </motion.h1>
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-foreground/70 text-lg mb-8"
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-foreground/70"
               >
-                Explore my work across different domains and technologies. From web applications to libraries, tools, and more.
+                A collection of my work, experiments, and open-source contributions
               </motion.p>
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative"
               >
-                <Link 
-                  href="/" 
-                  className="inline-flex items-center gap-2 bg-card hover:bg-card/80 border border-border px-6 py-3 rounded-lg transition-colors"
+                <button 
+                  onClick={() => setShowFilters(!showFilters)}
+                  className="bg-card p-2 rounded-lg border border-border/50 hover:border-primary/50 transition-colors relative"
+                  aria-label="Toggle filters"
                 >
-                  <FiArrowLeft /> Back to Home
-                </Link>
+                  <FiSliders size={20} className={showFilters ? "text-primary" : "text-foreground/70"} />
+                </button>
+                {filteredProjects.length !== projectsData.length && (
+                  <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-primary" />
+                )}
+              </motion.div>
+              
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-card p-2 rounded-lg border border-border/50 hover:border-primary/50 transition-colors"
+              >
+                <button
+                  onClick={() => setViewMode(viewMode === 'grid' ? 'list' : 'grid')}
+                  className="flex items-center"
+                  aria-label={viewMode === 'grid' ? 'Switch to list view' : 'Switch to grid view'}
+                >
+                  {viewMode === 'grid' ? (
+                    <FiList size={20} className="text-foreground/70" />
+                  ) : (
+                    <FiGrid size={20} className="text-foreground/70" />
+                  )}
+                </button>
               </motion.div>
             </div>
-          </section>
-
-          {/* Filters and search */}
-          <section className="mb-8">
-            <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
-              <div className="relative flex-grow max-w-xl">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <FiSearch className="text-foreground/40" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Search projects by name, description, or technology..."
-                  className="w-full pl-10 pr-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setViewMode('grid')}
-                  className={`p-3 rounded-lg ${viewMode === 'grid' ? 'bg-primary text-white' : 'bg-card border border-border'}`}
-                  aria-label="Grid view"
-                >
-                  <FiGrid />
-                </button>
-                <button
-                  onClick={() => setViewMode('list')}
-                  className={`p-3 rounded-lg ${viewMode === 'list' ? 'bg-primary text-white' : 'bg-card border border-border'}`}
-                  aria-label="List view"
-                >
-                  <FiList />
-                </button>
-                <button
-                  onClick={() => setShowFilters(!showFilters)}
-                  className="p-3 bg-card border border-border rounded-lg md:hidden"
-                  aria-label="Show filters"
-                >
-                  <FiFilter />
-                </button>
-              </div>
-            </div>
-
-            <div className={`${showFilters ? 'flex' : 'hidden'} md:flex overflow-x-auto whitespace-nowrap py-2 mb-4`}>
-              <div className="flex flex-wrap gap-2 w-full">
-                {projectCategories.map(category => (
-                  <motion.button
-                    key={category.id}
-                    onClick={() => setActiveCategory(category.id)}
-                    className={`px-4 py-2 rounded-full text-sm flex items-center gap-2 transition-all ${
-                      activeCategory === category.id
-                        ? 'bg-primary text-white shadow-md'
-                        : 'bg-card border border-border hover:bg-muted'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span>{category.icon}</span>
-                    {category.name}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center mb-4">
-              <p className="text-foreground/70">
-                {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
-              </p>
-              <div className="flex gap-2">
-                <select
-                  className="p-2 rounded-lg bg-card border border-border text-sm"
-                  onChange={(e) => setSortOrder(e.target.value)}
-                  defaultValue="newest"
-                >
-                  <option value="newest">Newest First</option>
-                  <option value="oldest">Oldest First</option>
-                  <option value="a-z">Name (A-Z)</option>
-                  <option value="z-a">Name (Z-A)</option>
-                </select>
-              </div>
-            </div>
-          </section>
-
-          {/* Projects display */}
-          <AnimatePresence mode="wait">
+          </div>
+        </motion.div>
+        
+        <AnimatePresence>
+          {showFilters && (
             <motion.div
-              key={`${viewMode}-${activeCategory}`}
-              variants={containerVariants}
-              initial="initial"
-              animate="animate"
-              className={viewMode === 'grid' 
-                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-                : "flex flex-col gap-4"
-              }
+              variants={filterVariants}
+              initial="hidden"
+              animate="visible"
+              exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
+              className="bg-card rounded-xl border border-border/50 p-4 shadow-lg mb-8"
             >
-              {filteredProjects.length > 0 ? (
-                filteredProjects.map((project, index) => (
-                  <motion.div
-                    key={`${project.name}-${index}`}
-                    variants={itemVariants}
-                    className={`bg-card border border-border rounded-lg overflow-hidden transition-all ${
-                      viewMode === 'grid' 
-                        ? 'flex flex-col h-full hover:shadow-lg hover:-translate-y-1'
-                        : 'flex flex-col md:flex-row h-full hover:shadow-md'
-                    }`}
-                    whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
-                  >
-                    <div className={`${viewMode === 'grid' ? 'h-48' : 'h-48 md:h-auto md:w-64'} bg-muted flex items-center justify-center`}>
-                      {project.image ? (
-                        <div className="relative w-full h-full">
-                          <img 
-                            src={project.image.startsWith('/') ? project.image : `/${project.image}`} 
-                            alt={project.name} 
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = `https://placehold.co/600x400/3a86ff/FFFFFF?text=${encodeURIComponent(project.name)}`;
-                            }}
-                          />
-                        </div>
-                      ) : (
-                        <div className="bg-gradient-to-br from-primary/20 to-secondary/20 w-full h-full flex items-center justify-center text-center p-4">
-                          <span className="text-foreground/50 font-mono text-xl">{project.name}</span>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="p-5 flex-grow flex flex-col">
-                      <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-xl font-bold">{project.name}</h3>
-                        <div className="flex gap-2">
-                          {project.github && (
-                            <a 
-                              href={project.github} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="text-foreground/70 hover:text-primary transition-colors"
-                              aria-label={`GitHub repository for ${project.name}`}
-                            >
-                              <FiGithub size={18} />
-                            </a>
-                          )}
-                          {project.live && (
-                            <a 
-                              href={project.live} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="text-foreground/70 hover:text-primary transition-colors"
-                              aria-label={`Live demo for ${project.name}`}
-                            >
-                              <FiExternalLink size={18} />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <p className="text-foreground/70 text-sm mb-4 flex-grow">{project.description}</p>
-                      
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        {project.tech.map((tech, idx) => (
-                          <span key={idx} className="px-2 py-1 bg-muted rounded-full text-xs">{tech}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))
-              ) : (
-                <motion.div 
-                  variants={itemVariants}
-                  className="col-span-full py-16 text-center"
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-lg font-bold">Filter & Sort</h2>
+                <button 
+                  onClick={() => setShowFilters(false)}
+                  aria-label="Close filters"
+                  className="p-1 rounded-full hover:bg-background/80"
                 >
-                  <div className="max-w-md mx-auto">
-                    <p className="text-lg text-foreground/70 mb-4">No projects match your search criteria.</p>
-                    <button
-                      onClick={() => {
-                        setActiveCategory('all');
-                        setSearchTerm('');
-                      }}
-                      className="px-4 py-2 bg-primary text-white rounded-lg"
-                    >
-                      Reset Filters
-                    </button>
+                  <FiX size={20} />
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <h3 className="text-sm uppercase tracking-wider text-foreground/60 mb-3">Search</h3>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      placeholder="Search projects..."
+                      className="w-full bg-background rounded-lg border border-border/50 py-2 pl-10 pr-4 focus:ring-2 focus:ring-primary/30 focus:border-primary/60 transition-all"
+                    />
+                    <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground/50" />
+                    {searchTerm && (
+                      <button
+                        onClick={() => setSearchTerm('')}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-foreground/50 hover:text-foreground"
+                      >
+                        <FiX size={16} />
+                      </button>
+                    )}
                   </div>
-                </motion.div>
-              )}
+                </div>
+                
+                <div>
+                  <h3 className="text-sm uppercase tracking-wider text-foreground/60 mb-3">Categories</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {projectCategories.map((category) => (
+                      <button
+                        key={category.id}
+                        onClick={() => setActiveCategory(category.id)}
+                        className={`px-3 py-1 rounded-full text-sm flex items-center gap-1 transition-all ${
+                          activeCategory === category.id
+                            ? 'bg-primary/20 text-primary border border-primary/30'
+                            : 'bg-background border border-border/50 hover:border-primary/30'
+                        }`}
+                      >
+                        {category.icon}
+                        <span>{category.name}</span>
+                        {activeCategory === category.id && (
+                          <FiCheck size={14} className="ml-1" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-sm uppercase tracking-wider text-foreground/60 mb-3">Sort By</h3>
+                  <select
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value)}
+                    className="w-full bg-background rounded-lg border border-border/50 p-2 focus:ring-2 focus:ring-primary/30 focus:border-primary/60 transition-all"
+                  >
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div className="flex justify-between items-center mt-4 pt-3 border-t border-border/30">
+                <div className="text-sm text-foreground/70">
+                  Showing <span className="font-medium text-foreground">{filteredProjects.length}</span> of {projectsData.length} projects
+                </div>
+                
+                <button
+                  onClick={() => {
+                    setActiveCategory('all');
+                    setSearchTerm('');
+                    setSortOrder('newest');
+                  }}
+                  className="text-sm text-primary hover:underline"
+                >
+                  Reset Filters
+                </button>
+              </div>
             </motion.div>
-          </AnimatePresence>
-        </div>
+          )}
+        </AnimatePresence>
+        
+        {filteredProjects.length > 0 ? (
+          <motion.div 
+            variants={containerVariants}
+            className={viewMode === 'grid' 
+              ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' 
+              : 'space-y-6'
+            }
+          >
+            {filteredProjects.map((project, index) => renderProjectCard(project, index))}
+          </motion.div>
+        ) : (
+          <motion.div
+            variants={itemVariants}
+            className="text-center py-16"
+          >
+            <div className="inline-block p-5 rounded-full bg-background/80 mb-4">
+              <FiFilter size={40} className="text-foreground/40" />
+            </div>
+            <h3 className="text-xl font-bold mb-2">No projects found</h3>
+            <p className="text-foreground/70 mb-6">Try adjusting your search or filter criteria</p>
+            <button
+              onClick={() => {
+                setActiveCategory('all');
+                setSearchTerm('');
+              }}
+              className="bg-primary text-white px-4 py-2 rounded-lg inline-flex items-center"
+            >
+              <FiX className="mr-2" />
+              Clear Filters
+            </button>
+          </motion.div>
+        )}
       </motion.main>
+      
       <Footer />
       <BackToTop />
-      <ThemeToggle />
-    </>
+    </motion.div>
+  );
+};
+
+// Grid view project card component
+const GridProjectCard = ({ project }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <motion.div
+      className="bg-card rounded-xl border border-border/50 overflow-hidden h-full flex flex-col shadow-sm hover:shadow-lg transition-all duration-300"
+      whileHover={{ 
+        y: -5,
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <div className="relative overflow-hidden h-48">
+        <LazyImage
+          src={project.image}
+          alt={project.name}
+          width={500}
+          height={300}
+          className="w-full h-full object-cover transform transition-transform duration-500"
+          style={{
+            transform: isHovered ? 'scale(1.05)' : 'scale(1)'
+          }}
+        />
+        <div 
+          className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity duration-300"
+          style={{ opacity: isHovered ? 1 : 0 }}
+        />
+        
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 p-4 text-white transform transition-all duration-300"
+          style={{
+            y: isHovered ? 0 : 20,
+            opacity: isHovered ? 1 : 0
+          }}
+        >
+          <div className="flex space-x-2">
+            {project.github && (
+              <a 
+                href={project.github} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-primary/80 transition-colors"
+                aria-label={`GitHub repository for ${project.name}`}
+              >
+                <FiGithub size={18} />
+              </a>
+            )}
+            {project.live && (
+              <a 
+                href={project.live} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-2 bg-black/50 backdrop-blur-sm rounded-full hover:bg-primary/80 transition-colors"
+                aria-label={`Live demo for ${project.name}`}
+              >
+                <FiExternalLink size={18} />
+              </a>
+            )}
+          </div>
+        </motion.div>
+      </div>
+      
+      <div className="p-5 flex-grow flex flex-col">
+        <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+        <p className="text-foreground/70 mb-4 flex-grow">{project.description}</p>
+        
+        <div className="mt-auto">
+          <div className="flex flex-wrap gap-2">
+            {project.tech.slice(0, 3).map((tech) => (
+              <span 
+                key={tech} 
+                className="bg-background px-2 py-1 rounded-full text-xs border border-border/50"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.tech.length > 3 && (
+              <span className="bg-background px-2 py-1 rounded-full text-xs border border-border/50">
+                +{project.tech.length - 3}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// List view project card component
+const ListProjectCard = ({ project }) => {
+  return (
+    <motion.div
+      className="bg-card rounded-xl border border-border/50 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+      whileHover={{ 
+        x: 5,
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+      }}
+    >
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="md:col-span-1">
+          <div className="relative overflow-hidden h-full max-h-40 md:max-h-full">
+            <LazyImage
+              src={project.image}
+              alt={project.name}
+              width={300}
+              height={200}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        
+        <div className="p-5 md:col-span-3 flex flex-col">
+          <div className="flex justify-between items-start mb-3">
+            <h3 className="text-xl font-bold">{project.name}</h3>
+            
+            <div className="flex space-x-2">
+              {project.github && (
+                <a 
+                  href={project.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-2 bg-background rounded-full hover:text-primary transition-colors"
+                  aria-label={`GitHub repository for ${project.name}`}
+                >
+                  <FiGithub size={18} />
+                </a>
+              )}
+              {project.live && (
+                <a 
+                  href={project.live} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-2 bg-background rounded-full hover:text-primary transition-colors"
+                  aria-label={`Live demo for ${project.name}`}
+                >
+                  <FiExternalLink size={18} />
+                </a>
+              )}
+            </div>
+          </div>
+          
+          <p className="text-foreground/70 mb-4">{project.description}</p>
+          
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {project.tech.map((tech) => (
+              <span 
+                key={tech} 
+                className="bg-background px-2 py-1 rounded-full text-xs border border-border/50"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
 export default ProjectsPage;
-
-// Grid and List view icons
-const FiGrid = ({ size = 20 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="3" width="7" height="7"></rect>
-    <rect x="14" y="3" width="7" height="7"></rect>
-    <rect x="14" y="14" width="7" height="7"></rect>
-    <rect x="3" y="14" width="7" height="7"></rect>
-  </svg>
-);
-
-const FiList = ({ size = 20 }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="8" y1="6" x2="21" y2="6"></line>
-    <line x1="8" y1="12" x2="21" y2="12"></line>
-    <line x1="8" y1="18" x2="21" y2="18"></line>
-    <line x1="3" y1="6" x2="3.01" y2="6"></line>
-    <line x1="3" y1="12" x2="3.01" y2="12"></line>
-    <line x1="3" y1="18" x2="3.01" y2="18"></line>
-  </svg>
-);

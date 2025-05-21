@@ -1,10 +1,20 @@
 "use client";
 
+import { useState, useRef } from 'react';
 import SectionContainer from '../ui/SectionContainer';
-import { motion } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { FiCode, FiPenTool, FiBox, FiGlobe, FiServer, FiLayers } from 'react-icons/fi';
+import { useIntersectionObserver, RevealOnScroll } from '@/utils/animation';
 
 const AboutSection = () => {
+  const [activeTab, setActiveTab] = useState('specializations');
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const { ref: aboutRef, isIntersecting: isAboutVisible } = useIntersectionObserver({
+    threshold: 0.2,
+    triggerOnce: true
+  });
+
   const specializations = [
     {
       icon: <FiCode size={24} />,
@@ -45,13 +55,14 @@ const AboutSection = () => {
     other: ["RESTful APIs", "Web Scraping", "Blogging Platforms", "DevOps", "AWS", "MySQL"]
   };
 
-  // Animation variants
+  // Enhanced animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
   };
@@ -63,141 +74,147 @@ const AboutSection = () => {
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100
+        stiffness: 100,
+        damping: 15
       }
     }
   };
 
+  const tabVariants = {
+    inactive: { opacity: 0.6, scale: 0.95 },
+    active: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { type: "spring", stiffness: 300, damping: 20 }
+    }
+  };
+
   return (
-    <SectionContainer id="about">
-      <div className="text-center mb-16">
-        <motion.h2 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block"
-        >
-          About Me
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-foreground/70 max-w-2xl mx-auto text-lg"
-        >
-          I'm passionate about creating impactful digital experiences through a combination of technical expertise and creative problem-solving.
-        </motion.p>
+    <SectionContainer id="about" ref={sectionRef}>
+      <div className="text-center mb-16" ref={aboutRef}>
+        <RevealOnScroll animation="fade-down" delay={0.1}>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block">
+            About Me
+          </h2>
+        </RevealOnScroll>
+        
+        <RevealOnScroll animation="fade-up" delay={0.3}>
+          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
+            I'm passionate about creating impactful digital experiences through a combination of technical expertise and creative problem-solving.
+          </p>
+        </RevealOnScroll>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-bold mb-4">My Journey</h3>
-          <p className="text-foreground/70 mb-4 leading-relaxed">
-            As a dedicated developer and designer, I've spent years honing my skills across various programming languages and frameworks. My journey in the tech world has been driven by curiosity and a desire to create meaningful solutions.
-          </p>
-          <p className="text-foreground/70 mb-4 leading-relaxed">
-            I specialize in building full-stack applications, developing open-source tools, and creating interactive user interfaces that deliver exceptional experiences.
-          </p>
-          <p className="text-foreground/70 leading-relaxed">
-            My approach combines technical proficiency with creative thinking, allowing me to tackle complex problems with innovative solutions. I'm always looking to learn new technologies and improve my skills.
-          </p>
-        </motion.div>
-
-        <div>
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-2xl font-bold mb-6"
-          >
-            Technical Expertise
-          </motion.h3>
-          
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            <motion.div variants={itemVariants} className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-semibold mb-2 text-primary">Programming Languages</h4>
-              <div className="flex flex-wrap gap-2">
-                {technologies.languages.map((lang, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-muted rounded-full text-sm">{lang}</span>
-                ))}
-              </div>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-semibold mb-2 text-primary">Frameworks & Libraries</h4>
-              <div className="flex flex-wrap gap-2">
-                {technologies.frameworks.map((framework, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-muted rounded-full text-sm">{framework}</span>
-                ))}
-              </div>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-semibold mb-2 text-primary">Tools & Platforms</h4>
-              <div className="flex flex-wrap gap-2">
-                {technologies.tools.map((tool, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-muted rounded-full text-sm">{tool}</span>
-                ))}
-              </div>
-            </motion.div>
-            
-            <motion.div variants={itemVariants} className="bg-card border border-border rounded-lg p-4">
-              <h4 className="font-semibold mb-2 text-primary">Other Technologies</h4>
-              <div className="flex flex-wrap gap-2">
-                {technologies.other.map((tech, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-muted rounded-full text-sm">{tech}</span>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
+      <div className="flex justify-center mb-10">
+        <div className="inline-flex bg-background/30 backdrop-blur-sm p-1 rounded-lg border border-border/40 shadow-md">
+          {['specializations', 'journey'].map((tab) => (
+            <motion.button
+              key={tab}
+              variants={tabVariants}
+              initial="inactive"
+              animate={activeTab === tab ? "active" : "inactive"}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-2 rounded-md transition-all ${
+                activeTab === tab 
+                  ? 'bg-primary/10 text-primary shadow-sm' 
+                  : 'hover:bg-background/60 hover:text-foreground/90'
+              }`}
+            >
+              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+            </motion.button>
+          ))}
         </div>
       </div>
 
-      <div>
-        <motion.h3 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-2xl font-bold mb-6 text-center"
-        >
-          Specializations
-        </motion.h3>
-        
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {specializations.map((spec, index) => (
-            <motion.div 
-              key={index}
-              variants={itemVariants}
-              className="p-5 bg-card border border-border rounded-lg hover:shadow-lg transition-all hover:translate-y-[-5px]"
-            >
-              <div className="text-primary mb-3">{spec.icon}</div>
-              <h4 className="text-xl font-semibold mb-2">{spec.title}</h4>
-              <p className="text-foreground/70 text-sm">{spec.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+      <AnimatePresence mode="wait">
+        {activeTab === 'specializations' ? (
+          <motion.div
+            key="specializations"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+          >
+            {specializations.map((specialization, index) => (
+              <RevealOnScroll 
+                key={specialization.title} 
+                animation="zoom-in" 
+                delay={index * 0.1}
+                className="relative"
+              >
+                <motion.div
+                  whileHover={{ 
+                    y: -5, 
+                    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" 
+                  }}
+                  className="bg-card p-6 rounded-xl border border-border/50 h-full flex flex-col"
+                >
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary inline-block mb-4">
+                    {specialization.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{specialization.title}</h3>
+                  <p className="text-foreground/70">{specialization.description}</p>
+                </motion.div>
+              </RevealOnScroll>
+            ))}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="journey"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16"
+          >
+            <RevealOnScroll animation="fade-right">
+              <h3 className="text-2xl font-bold mb-4">My Journey</h3>
+              <p className="text-foreground/80 mb-4">
+                My journey in technology began with a curiosity about how digital systems work. Over the years, I've evolved from a curious learner to a skilled developer, consistently expanding my knowledge and refining my craft.
+              </p>
+              <p className="text-foreground/80">
+                I thrive in collaborative environments where innovative solutions are valued, and I'm constantly seeking opportunities to push the boundaries of what's possible in digital development.
+              </p>
+            </RevealOnScroll>
+
+            <RevealOnScroll animation="fade-left" delay={0.2}>
+              <h3 className="text-2xl font-bold mb-4">My Approach</h3>
+              <p className="text-foreground/80 mb-4">
+                I believe in creating technology that not only functions flawlessly but also delivers an exceptional user experience. My approach combines technical precision with creative thinking, resulting in solutions that are both robust and engaging.
+              </p>
+              <p className="text-foreground/80">
+                Whether I'm developing a complex web application or contributing to an open-source project, I prioritize clean code, thoughtful architecture, and seamless integration.
+              </p>
+            </RevealOnScroll>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <RevealOnScroll animation="fade-up">
+        <div className="bg-card p-8 rounded-xl border border-border/50 shadow-lg">
+          <h3 className="text-2xl font-bold mb-6 text-center">Technologies I Work With</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {Object.entries(technologies).map(([category, items]) => (
+              <RevealOnScroll key={category} animation="fade-up" delay={0.1} className="flex flex-col">
+                <h4 className="uppercase text-sm font-bold text-primary mb-3">{category}</h4>
+                <ul className="space-y-2">
+                  {items.map((item) => (
+                    <motion.li 
+                      key={item}
+                      whileHover={{ x: 5 }}
+                      className="flex items-center text-foreground/80"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/70 mr-2"></span>
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </RevealOnScroll>
     </SectionContainer>
   );
 };

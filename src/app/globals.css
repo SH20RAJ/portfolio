@@ -13,6 +13,8 @@
   --border: #e5e5e5;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --cursor-size: 20px;
+  --cursor-color: rgba(58, 134, 255, 0.3);
 }
 
 .dark {
@@ -36,6 +38,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -43,6 +46,7 @@ body {
   color: white;
 }
 
+/* Enhanced Basic Animations */
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -58,29 +62,146 @@ body {
   }
 }
 
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced Card Hovering Effects */
 .skill-card {
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease, 
+              background-color 0.3s ease;
 }
 
 .skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1), 
+              0 10px 20px -10px rgba(var(--primary-rgb), 0.2);
 }
 
 .project-card {
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.4s ease, 
+              background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 
+              0 10px 20px -10px rgba(var(--primary-rgb), 0.2);
 }
 
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
+  transform: skewX(-25deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.project-card:hover::before {
+  animation: shine 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+    opacity: 1;
+  }
+}
+
+/* Button Hover Effects */
+.button-primary {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(var(--primary-rgb), 0.3), 
+              0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.6s ease;
+}
+
+.button-primary:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Gradient Text Styles */
 .gradient-text {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   background-image: linear-gradient(135deg, var(--primary), var(--secondary));
+  transition: background-position 0.6s ease;
+  background-size: 200% 100%;
+  background-position: left center;
+}
+
+.gradient-text:hover {
+  background-position: right center;
 }
 
 .section-heading {
@@ -97,76 +218,90 @@ body {
   height: 4px;
   background: linear-gradient(to right, var(--primary), var(--secondary));
   border-radius: 2px;
+  transition: width 0.3s ease-in-out;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+.section-heading:hover::after {
+  width: 80px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+/* Floating Animation for Icons */
+.floating {
+  animation: floating 3s ease-in-out infinite;
 }
 
-::selection {
-  background-color: var(--primary);
-  color: white;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
   }
-  to {
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Pulsing Animation for Focus Elements */
+.pulsing {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
   }
 }
 
-.skill-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.skill-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.project-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.gradient-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(135deg, var(--primary), var(--secondary));
-}
-
-.section-heading {
+/* Text Reveal Animation */
+.reveal-text {
   position: relative;
+  overflow: hidden;
   display: inline-block;
 }
 
-.section-heading::after {
+.reveal-text::after {
   content: '';
   position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  border-radius: 2px;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Cursor follower effect - for interactive elements */
+.cursor-reactive {
+  position: relative;
+}
+
+.cursor-reactive::before {
+  content: '';
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  border-radius: 50%;
+  background-color: var(--cursor-color);
+  position: absolute;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: -1;
+  pointer-events: none;
 }

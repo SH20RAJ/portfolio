@@ -1,10 +1,15 @@
 "use client";
 
+import { useRef } from 'react';
 import SectionContainer from '../ui/SectionContainer';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useIntersectionObserver, RevealOnScroll } from '@/utils/animation';
 
 const SkillsSection = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+
   const skillCategories = [
     {
       title: "Programming Languages",
@@ -62,134 +67,179 @@ const SkillsSection = () => {
     }
   ];
 
-  // Animation variants
+  // Animation variants for skill cards
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.05,
+        delayChildren: 0.2
       }
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
+      opacity: 1, 
       y: 0,
-      opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  // Animation variants for skills
+  const skillVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: (custom) => ({
+      scale: 1,
+      opacity: 1,
+      transition: {
+        delay: custom * 0.1,
+        type: "spring",
+        stiffness: 200,
+        damping: 20
+      }
+    }),
+    hover: { 
+      scale: 1.1, 
+      y: -5,
+      transition: { 
+        type: "spring", 
+        stiffness: 300, 
+        damping: 10 
       }
     }
   };
 
   return (
-    <SectionContainer id="skills">
-      <div className="text-center mb-16">
-        <motion.h2 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block"
-        >
-          My Skills
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-foreground/70 max-w-2xl mx-auto"
-        >
-          A comprehensive set of technologies and tools I'm proficient with.
-        </motion.p>
-      </div>
-
-      <div className="space-y-16">
-        {skillCategories.map((category, categoryIndex) => (
-          <div key={categoryIndex}>
-            <motion.h3 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-2xl font-semibold mb-8 text-center"
-            >
-              {category.title}
-            </motion.h3>
-            
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6"
-            >
-              {category.skills.map((skill, skillIndex) => (
-                <motion.div
-                  key={skillIndex}
-                  variants={itemVariants}
-                  className="bg-card border border-border rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-md transition-all hover:scale-105"
-                >
-                  <div className="w-12 h-12 mb-3 flex items-center justify-center">
-                    <img 
-                      src={skill.icon} 
-                      alt={`${skill.name} icon`} 
-                      className="max-w-full max-h-full object-contain"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = `https://placehold.co/100x100/3a86ff/FFFFFF?text=${skill.name.charAt(0)}`;
-                      }}
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-center">{skill.name}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        ))}
-      </div>
-      
-      {/* Skill meter visualization - alternative way to display proficiency */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true }}
-        className="mt-16 p-6 bg-card border border-border rounded-lg"
-      >
-        <h3 className="text-xl font-semibold mb-6 text-center">Core Expertise</h3>
-        
-        <div className="space-y-4">
-          {[
-            { name: "Front-end Development", level: 95 },
-            { name: "JavaScript/TypeScript", level: 90 },
-            { name: "React & Next.js", level: 92 },
-            { name: "Back-end Development", level: 85 },
-            { name: "UI/UX Design", level: 80 },
-            { name: "Open Source Development", level: 88 },
-          ].map((skill, index) => (
-            <div key={index} className="mb-2">
-              <div className="flex justify-between mb-1">
-                <span className="text-sm font-medium">{skill.name}</span>
-                <span className="text-sm font-medium">{skill.level}%</span>
-              </div>
-              <div className="w-full bg-muted rounded-full h-2.5">
-                <motion.div 
-                  className="bg-gradient-to-r from-primary to-secondary h-2.5 rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                />
-              </div>
-            </div>
-          ))}
+    <SectionContainer id="skills" ref={sectionRef}>
+      <RevealOnScroll animation="fade-down">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block">
+            My Skills
+          </h2>
+          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
+            A collection of technologies I've worked with throughout my journey as a developer
+          </p>
         </div>
+      </RevealOnScroll>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
+        {skillCategories.map((category, categoryIndex) => (
+          <RevealOnScroll 
+            key={category.title} 
+            animation="fade-up" 
+            delay={categoryIndex * 0.1}
+            className="h-full"
+          >
+            <motion.div
+              variants={cardVariants}
+              whileHover={{ 
+                y: -5, 
+                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              className="bg-card rounded-xl border border-border/50 p-6 h-full flex flex-col"
+            >
+              <h3 className="text-xl font-bold mb-6 text-center">{category.title}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 flex-grow">
+                {category.skills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    className="flex flex-col items-center text-center"
+                    variants={skillVariants}
+                    custom={index}
+                    whileHover="hover"
+                  >
+                    <div className="relative w-12 h-12 mb-3 bg-background/50 rounded-lg p-2 flex items-center justify-center">
+                      <Image
+                        src={skill.icon}
+                        alt={skill.name}
+                        width={30}
+                        height={30}
+                        className="object-contain filter drop-shadow-md"
+                        loading="lazy"
+                      />
+                      <motion.div
+                        className="absolute inset-0 bg-primary/10 rounded-lg"
+                        initial={{ scale: 0, opacity: 0 }}
+                        whileHover={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                    <span className="text-sm text-foreground/80 font-medium">{skill.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </RevealOnScroll>
+        ))}
       </motion.div>
+
+      <RevealOnScroll animation="fade-up" delay={0.4} className="mt-16">
+        <div className="bg-card rounded-xl border border-border/50 p-8 shadow-lg">
+          <h3 className="text-xl font-bold mb-6 text-center">Other Skills & Achievements</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="font-semibold text-primary mb-3">Technical Expertise</h4>
+              <ul className="space-y-2">
+                {[
+                  "RESTful API Design & Development",
+                  "Progressive Web Applications (PWA)",
+                  "Responsive Web Design",
+                  "Web Performance Optimization",
+                  "Cross-Browser Compatibility"
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/70 mr-2"></span>
+                    <span className="text-foreground/80">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-primary mb-3">Soft Skills</h4>
+              <ul className="space-y-2">
+                {[
+                  "Problem Solving & Critical Thinking",
+                  "Effective Communication",
+                  "Team Collaboration",
+                  "Continuous Learning",
+                  "Attention to Detail"
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/70 mr-2"></span>
+                    <span className="text-foreground/80">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </RevealOnScroll>
     </SectionContainer>
   );
 };
