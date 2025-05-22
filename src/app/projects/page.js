@@ -314,8 +314,8 @@ const ProjectsPage = () => {
           <motion.div 
             variants={containerVariants}
             className={viewMode === 'grid' 
-              ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' 
-              : 'space-y-6'
+              ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8' 
+              : 'space-y-8'
             }
           >
             {filteredProjects.map((project, index) => renderProjectCard(project, index))}
@@ -356,7 +356,7 @@ const GridProjectCard = ({ project }) => {
   
   return (
     <motion.div
-      className="bg-card rounded-xl border border-border/50 overflow-hidden h-full flex flex-col shadow-sm hover:shadow-lg transition-all duration-300"
+      className="bg-card rounded-xl border border-border/50 overflow-hidden h-full flex flex-col shadow-sm hover:shadow-lg transition-all duration-300 min-h-[30rem]"
       whileHover={{ 
         y: -5,
         boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
@@ -364,13 +364,13 @@ const GridProjectCard = ({ project }) => {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden h-48">
+      <div className="relative overflow-hidden h-0 pb-[56.25%]">
         <LazyImage
-          src={project.image}
+          src={project.image || '/projects/notesflow.jpg'}
           alt={project.name}
           width={500}
-          height={300}
-          className="w-full h-full object-cover transform transition-transform duration-500"
+          height={281}
+          className="absolute inset-0 w-full h-full object-cover object-center transform transition-transform duration-500"
           style={{
             transform: isHovered ? 'scale(1.05)' : 'scale(1)'
           }}
@@ -452,13 +452,13 @@ const ListProjectCard = ({ project }) => {
     >
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="md:col-span-1">
-          <div className="relative overflow-hidden h-full max-h-40 md:max-h-full">
+          <div className="relative overflow-hidden h-0 pb-[56.25%] md:h-auto md:aspect-video">
             <LazyImage
-              src={project.image}
+              src={project.image || '/projects/notesflow.jpg'}
               alt={project.name}
               width={300}
-              height={200}
-              className="w-full h-full object-cover"
+              height={169}
+              className="absolute inset-0 w-full h-full object-cover object-center md:static md:aspect-video"
             />
           </div>
         </div>
