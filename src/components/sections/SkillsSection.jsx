@@ -147,17 +147,96 @@ const SkillsSection = () => {
     })
   };
 
+  // Background blob animation
+  const blobVariants = {
+    initial: {
+      scale: 0.8,
+      opacity: 0,
+    },
+    animate: (custom) => ({
+      scale: 1,
+      opacity: 0.15,
+      x: custom % 2 === 0 ? [0, 15, 0, -15, 0] : [0, -15, 0, 15, 0],
+      y: custom % 2 === 0 ? [0, -15, 0, 15, 0] : [0, 15, 0, -15, 0],
+      transition: {
+        x: { repeat: Infinity, duration: 20 + custom * 2, repeatType: 'loop', ease: 'easeInOut' },
+        y: { repeat: Infinity, duration: 25 + custom * 2, repeatType: 'loop', ease: 'easeInOut' },
+        opacity: { duration: 0.8 },
+        scale: { duration: 0.8 }
+      }
+    })
+  };
+
   return (
-    <SectionContainer id="skills" ref={sectionRef}>
+    <SectionContainer id="skills" ref={sectionRef} className="relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 -z-10">
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={`skills-blob-${i}`}
+            custom={i}
+            variants={blobVariants}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            className={`absolute rounded-full bg-gradient-to-br ${
+              i === 1 
+                ? "from-primary/10 to-accent/5 -top-20 right-[10%] w-[500px] h-[500px]" 
+                : i === 2 
+                ? "from-secondary/10 to-primary/5 bottom-0 -left-20 w-[600px] h-[600px]" 
+                : "from-accent/10 to-secondary/5 top-[40%] right-[20%] w-[300px] h-[300px]"
+            }`}
+            style={{ filter: 'blur(120px)' }}
+          />
+        ))}
+        
+        {/* Decorative patterns */}
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] mix-blend-overlay"></div>
+      </div>
+      
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-12"
+        className="text-center mb-12 relative"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block">
-          Skills & Expertise
+        {/* Decorative element */}
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={isInView ? { width: "5rem" } : { width: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mb-6"
+        />
+        
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 relative inline-block">
+          <span className="bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 bg-clip-text text-transparent">Skills & Expertise</span>
+          
+          {/* Decorative elements */}
+          <motion.span
+            className="absolute -left-8 top-1/2 transform -translate-y-1/2 text-primary/20 text-xl"
+            initial={{ opacity: 0, x: -10 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            {"<"}
+          </motion.span>
+          <motion.span
+            className="absolute -right-8 top-1/2 transform -translate-y-1/2 text-primary/20 text-xl"
+            initial={{ opacity: 0, x: 10 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            {"/>"}
+          </motion.span>
+          
+          {/* Animated underline */}
+          <motion.div
+            className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 rounded-full opacity-80"
+            initial={{ width: 0, opacity: 0 }}
+            animate={isInView ? { width: '100%', opacity: 0.8 } : { width: 0, opacity: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          />
         </h2>
+        
         <p className="text-foreground/70 max-w-2xl mx-auto">
           A comprehensive overview of my technical skills, tools, and technologies I've mastered throughout my career.
         </p>
@@ -168,8 +247,16 @@ const SkillsSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="flex flex-wrap justify-center gap-3 mb-10"
+        className="flex flex-wrap justify-center gap-3 mb-10 relative"
       >
+        {/* Tab indicator line */}
+        <motion.div 
+          className="absolute bottom-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+          initial={{ width: 0, opacity: 0 }}
+          animate={isInView ? { width: "80%", opacity: 0.5 } : { width: 0, opacity: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        />
+      
         {skillCategories.map((category, index) => (
           <motion.button
             key={category.title}
@@ -179,9 +266,20 @@ const SkillsSection = () => {
             animate={activeCategory === index ? "active" : "inactive"}
             whileHover="hover"
             whileTap={{ scale: 0.95 }}
-            className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
+            className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all relative"
           >
             {category.title}
+            
+            {/* Active tab indicator */}
+            {activeCategory === index && (
+              <motion.div
+                layoutId="tabIndicator"
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto"
+                initial={{ width: 0 }}
+                animate={{ width: "80%" }}
+                transition={{ duration: 0.3 }}
+              />
+            )}
           </motion.button>
         ))}
       </motion.div>
@@ -209,11 +307,19 @@ const SkillsSection = () => {
                   variants={skillVariants}
                   initial="hidden"
                   animate={animateSkills ? "visible" : "hidden"}
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                  className="bg-card border border-border p-5 rounded-xl flex flex-col items-center relative overflow-hidden group"
+                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                  className="bg-card/50 backdrop-blur-sm border border-border/70 p-5 rounded-xl flex flex-col items-center relative overflow-hidden group"
                   onMouseEnter={() => setHoveredSkill(skill.name)}
                   onMouseLeave={() => setHoveredSkill(null)}
                 >
+                  {/* Card glow effect on hover */}
+                  <motion.div 
+                    className="absolute -inset-px rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 -z-10 blur-sm"
+                    animate={{ 
+                      opacity: hoveredSkill === skill.name ? 0.5 : 0 
+                    }}
+                  />
+                  
                   {/* Background gradient effect */}
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 transition-opacity duration-300 -z-10"
@@ -222,21 +328,27 @@ const SkillsSection = () => {
                     }}
                   />
                   
-                  {/* Skill Icon */}
-                  <div className="mb-4 p-3 rounded-lg bg-muted relative">
-                    {skill.icon && (
-                      <Image 
-                        src={skill.icon} 
-                        alt={skill.name}
-                        width={36}
-                        height={36}
-                        className="transition-transform duration-300 group-hover:scale-110"
-                      />
-                    )}
+                  {/* Skill Icon with enhanced container */}
+                  <div className="mb-4 p-3 rounded-lg bg-muted/70 relative group-hover:shadow-lg group-hover:shadow-primary/5 transition-all">
+                    <motion.div
+                      initial={{ rotate: 0 }}
+                      whileHover={{ rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {skill.icon && (
+                        <Image 
+                          src={skill.icon} 
+                          alt={skill.name}
+                          width={36}
+                          height={36}
+                          className="transition-transform duration-300 group-hover:scale-110"
+                        />
+                      )}
+                    </motion.div>
                   </div>
                   
                   {/* Skill Name */}
-                  <h3 className="text-lg font-semibold mb-2 text-center">
+                  <h3 className="text-lg font-semibold mb-2 text-center group-hover:text-primary transition-colors">
                     {skill.name}
                   </h3>
                   
@@ -244,7 +356,15 @@ const SkillsSection = () => {
                   <div className="w-full mt-auto">
                     <div className="flex justify-between text-xs text-foreground/60 mb-1">
                       <span>Proficiency</span>
-                      <span>{skill.proficiency}%</span>
+                      <motion.span 
+                        animate={hoveredSkill === skill.name ? 
+                          { color: 'var(--primary)', fontWeight: 600 } : 
+                          { color: 'var(--foreground-rgb)', fontWeight: 400 }
+                        }
+                        className="transition-all"
+                      >
+                        {skill.proficiency}%
+                      </motion.span>
                     </div>
                     <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
                       <motion.div
@@ -256,7 +376,7 @@ const SkillsSection = () => {
                           skill.proficiency > 90
                             ? "bg-gradient-to-r from-primary to-secondary"
                             : skill.proficiency > 80
-                            ? "bg-primary"
+                            ? "bg-gradient-to-r from-primary/90 to-primary"
                             : "bg-primary/70"
                         }`}
                       />
@@ -265,7 +385,7 @@ const SkillsSection = () => {
                   
                   {/* Hover effect glow */}
                   <motion.div 
-                    className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-20" 
+                    className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur opacity-0 transition-opacity duration-300 -z-20" 
                     animate={{ 
                       opacity: hoveredSkill === skill.name ? 0.2 : 0 
                     }}
@@ -282,12 +402,18 @@ const SkillsSection = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="mt-16 text-center"
+        className="mt-16 text-center relative"
       >
-        <p className="text-foreground/70 max-w-2xl mx-auto">
-          These skills represent my technical toolkit that I've built and refined over years of practical experience.
-          I'm continuously learning and adding new technologies to my repertoire.
-        </p>
+        <div className="max-w-2xl mx-auto px-6 py-5 border border-border/50 rounded-lg bg-card/30 backdrop-blur-sm relative overflow-hidden">
+          {/* Corner decorations */}
+          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-primary/40 rounded-tr-lg"></div>
+          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-primary/40 rounded-bl-lg"></div>
+          
+          <p className="text-foreground/70 relative z-10">
+            These skills represent my technical toolkit that I've built and refined over years of practical experience.
+            I'm continuously learning and adding new technologies to my repertoire.
+          </p>
+        </div>
       </motion.div>
     </SectionContainer>
   );

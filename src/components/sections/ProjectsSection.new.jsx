@@ -122,8 +122,16 @@ const ProjectsSection = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block">
-          My Projects
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 relative inline-block">
+          <span className="bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 bg-clip-text text-transparent">My Projects</span>
+          
+          {/* Animated underline */}
+          <motion.div
+            className="absolute -bottom-3 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 rounded-full opacity-80"
+            initial={{ width: 0, opacity: 0 }}
+            animate={isInView ? { width: '100%', opacity: 0.8 } : { width: 0, opacity: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          />
         </h2>
         <p className="text-foreground/70 max-w-2xl mx-auto">
           Explore my portfolio of work spanning web applications, tools, and open-source contributions that showcase my skills and passion for development.
