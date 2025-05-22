@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { FiMenu, FiX, FiArrowRight, FiMoon, FiSun } from 'react-icons/fi';
+import { FiMenu, FiX, FiArrowRight, FiMoon, FiSun, FiChevronRight } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
@@ -76,149 +76,202 @@ const Header = () => {
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'py-3' : 'py-5'
+          scrolled ? 'py-2' : 'py-4'
         }`}
       >
-        <div className={`absolute inset-0 bg-background/80 backdrop-blur-md shadow-sm transition-opacity duration-300 ${
-          scrolled || showBackground ? 'opacity-100' : 'opacity-0'
-        }`} />
+        <div 
+          className={`absolute inset-0 transition-all duration-300 ${
+            scrolled || showBackground 
+              ? 'bg-background/85 backdrop-blur-lg shadow-lg' 
+              : 'bg-transparent'
+          }`} 
+        />
         
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative z-10">
-          <Link href="/" className="text-xl font-bold relative">
-            <motion.span 
+          {/* Logo with animated elements */}
+          <Link href="/" className="group relative">
+            <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative"
+              className="flex items-center"
             >
-              <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                Shaswat Raj
-              </span>
-              <motion.span 
-                className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-secondary" 
+              {/* Logo icon/shape */}
+              <div className="relative mr-2 w-8 h-8 rounded-lg overflow-hidden bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                <div className="font-bold text-white text-lg transform -rotate-3 select-none">S</div>
+                
+                <motion.div 
+                  className="absolute inset-0 bg-white mix-blend-overlay"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0.2, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+                />
+              </div>
+              
+              {/* Logo text */}
+              <div className="flex flex-col">
+                <span className="text-lg font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                  Shaswat Raj
+                </span>
+                <span className="text-xs text-foreground/60 -mt-1">Developer & Designer</span>
+              </div>
+              
+              {/* Hover effect */}
+              <motion.div 
+                className="absolute -bottom-1 -left-2 -right-2 h-0.5 bg-gradient-to-r from-primary/80 via-accent/80 to-secondary/80 rounded-full origin-left"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               />
-            </motion.span>
+            </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`px-3 py-2 rounded-lg transition-all duration-300 relative overflow-hidden group ${
-                  activeSection === link.href.replace('#', '') 
-                    ? 'text-primary' 
-                    : 'text-foreground/70 hover:text-foreground'
-                }`}
-                onClick={closeMenu}
-              >
-                <span className="relative z-10">{link.name}</span>
-                <motion.span 
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full" 
-                  initial={{ scaleX: 0 }}
-                  animate={{ 
-                    scaleX: activeSection === link.href.replace('#', '') ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-                <span className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300" />
-              </Link>
-            ))}
-          </div>
-
-          <div className="hidden md:flex items-center space-x-4">
-            {/* <ThemeToggle /> */}
-            
-            <Link
-              href="#contact"
-              className="bg-primary text-white px-4 py-2 rounded-lg flex items-center space-x-1 hover:bg-primary/90 transition-colors"
-            >
-              <span>Let's Talk</span>
-              <FiArrowRight className="ml-1 animate-pulse-subtle" />
-            </Link>
+          {/* Desktop Navigation - Glass Card Style */}
+          <div className="hidden md:block">
+            <div className="bg-background/40 backdrop-blur-md border border-white/10 rounded-full px-2 py-1 shadow-lg">
+              <div className="flex items-center">
+                {navLinks.map((link) => {
+                  const isActive = activeSection === link.href.replace('/#', '');
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className="relative px-4 py-2 mx-1 rounded-full transition-all duration-300"
+                      onClick={closeMenu}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="navIndicator"
+                          className="absolute inset-0 bg-primary/20 dark:bg-primary/10 rounded-full"
+                          transition={{ type: "spring", duration: 0.6 }}
+                        />
+                      )}
+                      <span className={`relative z-10 font-medium text-sm ${
+                        isActive ? 'text-primary' : 'text-foreground/70 hover:text-foreground'
+                      }`}>
+                        {link.name}
+                      </span>
+                    </Link>
+                  );
+                })}
+                
+                {/* CTA Button */}
+                <Link
+                  href="#contact"
+                  className="ml-2 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg transform hover:translate-y-[-1px]"
+                >
+                  <span className="flex items-center">
+                    Let's Talk
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+                    >
+                      <FiChevronRight className="ml-1" />
+                    </motion.div>
+                  </span>
+                </Link>
+                
+                {/* Theme toggle will go here once uncommented */}
+              </div>
+            </div>
           </div>
 
           {/* Mobile Navigation */}
-          <div className="flex md:hidden items-center space-x-4">
+          <div className="flex md:hidden items-center space-x-3">
             {/* <ThemeToggle /> */}
             
             <button 
               onClick={toggleMenu} 
-              className="p-2 rounded-lg focus:outline-none bg-card hover:bg-muted transition-colors border border-border/50"
+              className="p-2 rounded-full focus:outline-none bg-background/60 backdrop-blur-md hover:bg-primary/10 transition-colors border border-white/10 shadow-md"
               aria-label="Toggle menu"
             >
-              {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+              <motion.div
+                initial={false}
+                animate={{ rotate: isOpen ? 90 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+              </motion.div>
             </button>
           </div>
         </nav>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Modern Glassmorphism */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden bg-card/95 backdrop-blur-md border-t border-border/30 shadow-lg"
+              transition={{ duration: 0.4 }}
+              className="md:hidden bg-background/90 backdrop-blur-xl border-t border-white/10 shadow-lg"
             >
-              <div className="container mx-auto px-4 py-4">
-                <div className="flex flex-col space-y-2">
-                  {navLinks.map((link, index) => (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link
-                        href={link.href}
-                        className={`px-4 py-3 rounded-lg flex justify-between items-center ${
-                          activeSection === link.href.replace('#', '') 
-                            ? 'bg-primary/10 text-primary' 
-                            : 'hover:bg-muted'
-                        }`}
-                        onClick={closeMenu}
+              <motion.div 
+                className="container mx-auto px-4 py-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+              >
+                <div className="flex flex-col space-y-1">
+                  {navLinks.map((link, index) => {
+                    const isActive = activeSection === link.href.replace('/#', '');
+                    return (
+                      <motion.div
+                        key={link.name}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.05 }}
                       >
-                        <span>{link.name}</span>
-                        {activeSection === link.href.replace('#', '') && (
-                          <motion.div 
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="h-1.5 w-1.5 rounded-full bg-primary"
-                          />
-                        )}
-                      </Link>
-                    </motion.div>
-                  ))}
+                        <Link
+                          href={link.href}
+                          className={`px-4 py-3 rounded-xl flex items-center space-x-2 ${
+                            isActive
+                              ? 'bg-primary/10 text-primary' 
+                              : 'hover:bg-white/5'
+                          }`}
+                          onClick={closeMenu}
+                        >
+                          {isActive && (
+                            <motion.div 
+                              layoutId="mobileNavIndicator"
+                              transition={{ duration: 0.3 }}
+                              className="h-2 w-2 rounded-full bg-primary"
+                            />
+                          )}
+                          <span className={isActive ? 'font-medium' : ''}>{link.name}</span>
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
                   
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: navLinks.length * 0.05 }}
-                    className="mt-2 pt-2 border-t border-border/30"
+                    className="mt-4 pt-2 border-t border-white/10"
                   >
                     <Link
                       href="#contact"
-                      className="bg-primary text-white px-4 py-3 rounded-lg flex justify-between items-center hover:bg-primary/90 transition-colors"
+                      className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-xl flex justify-between items-center shadow-md"
                       onClick={closeMenu}
                     >
-                      <span>Let's Talk</span>
-                      <FiArrowRight />
+                      <span className="font-medium">Let's Talk</span>
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <FiArrowRight />
+                      </motion.div>
                     </Link>
                   </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.header>
+      
       {/* This spacer ensures content doesn't hide behind the fixed header */}
-      <div className={`h-20 ${scrolled ? 'h-16' : 'h-24'} transition-all duration-300`} />
+      <div className={`${scrolled ? 'h-16' : 'h-20'} transition-all duration-300`} />
     </>
   );
 };
