@@ -109,7 +109,7 @@ const Header = () => {
               
               {/* Logo text */}
               <div className="flex flex-col">
-                <span className="text-lg font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                <span className="text-lg font-bold bg-gradient-to-r from-fuchsia-400 via-accent dark:to-white to-black bg-clip-text text-transparent">
                   Shaswat Raj
                 </span>
                 <span className="text-xs text-foreground/60 -mt-1">Developer & Designer</span>
