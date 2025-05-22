@@ -853,23 +853,35 @@ const HeroSection = () => {
                     
                     <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 to-secondary/15 mix-blend-overlay z-20"></div>
                     
-                    {/* Shine effect */}
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-tr from-transparent via-white to-transparent opacity-40 z-30"
-                      animate={{ 
-                        backgroundPosition: ["200% 200%", "-50% -50%"],
-                      }}
-                      transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut"
-                      }}
-                      style={{
-                        backgroundSize: "200% 200%"
-                      }}
-                    />
-                    
+            
+                    <div className="absolute inset-0 z-30 overflow-hidden"></div>
+                      {Array.from({ length: 20 }).map((_, i) => (
+                        <motion.div
+                          key={`star-${i}`}
+                          className="absolute rounded-full bg-white"
+                          style={{
+                            width: Math.random() * 3 + 1 + "px",
+                            height: Math.random() * 3 + 1 + "px",
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            boxShadow: "0 0 3px 1px rgba(255,255,255,0.6)"
+                          }}
+                          animate={{
+                            opacity: [0, 1, 0],
+                            scale: [0.5, 1.2, 0.5],
+                          }}
+                          transition={{
+                            duration: 1 + Math.random() * 3,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut",
+                            delay: Math.random() * 5,
+                            repeatDelay: Math.random() * 2
+                          }}
+                        />
+                      ))}
+                    </div>
+
                     {/* Grain texture overlay */}
                     <div 
                       className="absolute inset-0 opacity-10 z-10"
@@ -896,7 +908,7 @@ const HeroSection = () => {
                     transition={{ duration: 2, repeat: Infinity, delay: idx * 0.5 }}
                   />
                 ))}
-              </div>
+             
               
               <div className="absolute top-[5%] -right-4 w-16 h-16 bg-primary/20 rounded-full blur-xl"></div>
               <div className="absolute -bottom-2 -left-6 w-20 h-20 bg-secondary/20 rounded-full blur-xl"></div>

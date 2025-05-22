@@ -32,7 +32,7 @@ export const projectsData = [
     category: "fullstack",
     tech: ["React", "Next.js", "AI", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/reflecto",
-    live: "https://reflecto.netlifyy.app/",
+    live: "https://reflecto.netlify.app/",
     image: "https://socialify.git.ci/SH20RAJ/reflecto/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
@@ -50,7 +50,7 @@ export const projectsData = [
     category: "fullstack",
     tech: ["PHP", "MySQL", "JavaScript", "FFmpeg", "CSS"],
     github: "https://github.com/SH20RAJ/playtube",
-    live: "https://playtube.sh20raj.com",
+    live: "https://playtube.pages.dev",
     image: "https://socialify.git.ci/SH20RAJ/playtube/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
@@ -115,7 +115,7 @@ export const projectsData = [
     category: "websites",
     tech: ["WebRTC", "JavaScript", "Socket.io", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/peerdrop",
-    live: "https://peerdrop.sh20raj.com/",
+    live: "https://peerdrop.pages.dev/",
     image: "https://socialify.git.ci/SH20RAJ/peerdrop/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
@@ -147,32 +147,32 @@ export const projectsData = [
   },
   {
     name: "Waitlist.js",
-    description: "Tool for creating and managing waitlists",
+    description: "A SaaS platform that transforms traditional waitlists into growth engines by combining AI-powered engagement, viral referral systems, and psychological triggers to help businesses build anticipation and maximize conversions.",
     category: "websites",
-    tech: ["JavaScript", "Firebase", "Email API"],
+    tech: ["TypeScript", "JavaScript", "React", "API", "Analytics"],
     github: "https://github.com/SH20RAJ/waitlist.js",
-    live: null,
-    image: "/projects/waitlist.jpg"
+    live: "https://waitlist-js.vercel.app/",
+    image: "https://socialify.git.ci/SH20RAJ/waitlist.js/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "SocialScribe",
-    description: "Social media content scheduler and manager",
+    description: "An AI-powered tool that helps create tailored social media posts, comments, and direct messages with customizable tone, formality, and platform-specific adjustments for platforms like LinkedIn, Twitter, and Facebook.",
     category: "websites",
-    tech: ["React", "Social APIs", "Node.js"],
+    tech: ["React", "Next.js", "Gemini AI", "JavaScript", "CSS"],
     github: "https://github.com/SH20RAJ/SocialScribe",
-    live: null,
-    image: "/projects/socialscribe.jpg"
+    live: "https://socialscribe.pages.dev",
+    image: "https://socialify.git.ci/SH20RAJ/SocialScribe/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // Desktop Apps
   {
     name: "TubeSonic",
-    description: "Desktop YouTube music player with enhanced features",
+    description: "A lightweight, blazing-fast desktop app built with Tauri and React that lets you download YouTube videos and audio in various quality options with a beautiful glass morphism UI design.",
     category: "desktop",
-    tech: ["Electron", "YouTube API", "React"],
+    tech: ["Tauri", "React", "Rust", "yt-dlp", "JavaScript"],
     github: "https://github.com/SH20RAJ/TubeSonic",
-    live: null,
-    image: "/projects/tubesonic.jpg"
+    live: "https://github.com/SH20RAJ/TubeSonic/releases",
+    image: "https://socialify.git.ci/SH20RAJ/TubeSonic/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "NoMouse",
@@ -205,21 +205,21 @@ export const projectsData = [
   },
   {
     name: "Vibly",
-    description: "Interactive animations and transitions framework",
+    description: "A fully customizable video player built on top of Video.js with enhanced features and a modern UI. Features include responsive design, customizable themes, streaming support, accessibility features, and framework compatibility with React, Vue, and Angular.",
     category: "jsframeworks",
-    tech: ["JavaScript", "CSS Animations", "DOM"],
+    tech: ["JavaScript", "SCSS", "Video.js", "Media APIs", "Streaming"],
     github: "https://github.com/SH20RAJ/vibly",
-    live: null,
-    image: "/projects/vibly.jpg"
+    live: "https://sh20raj.github.io/vibly/",
+    image: "https://socialify.git.ci/SH20RAJ/vibly/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "MarkMind Editor",
-    description: "Markdown editor with mind-mapping features",
+    description: "A Notion-style WYSIWYG editor with AI-powered autocompletion built on Tiptap. Includes rich text editing with Markdown support, slash commands, bubble menus for formatting, image handling, tables support, and a customizable UI with themes.",
     category: "jsframeworks",
-    tech: ["JavaScript", "Markdown", "SVG"],
+    tech: ["TypeScript", "HTML", "CSS", "JavaScript", "React", "Next.js", "AI"],
     github: "https://github.com/SH20RAJ/markmind-editor",
-    live: null,
-    image: "/projects/markmind-editor.jpg"
+    live: "https://npmjs.com/package/markmind-editor",
+    image: "https://socialify.git.ci/SH20RAJ/markmind-editor/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "SteamLit",
@@ -241,32 +241,32 @@ export const projectsData = [
   },
   {
     name: "YouTube Remote Uploader",
-    description: "Remote upload and management tool for YouTube",
+    description: "A tool that automates downloading videos from remote URLs and uploading them to YouTube using the Data API. Perfect for batch processing and scheduled uploads using GitHub Actions with comprehensive metadata management.",
     category: "jsframeworks",
-    tech: ["JavaScript", "YouTube API", "Node.js"],
+    tech: ["Python", "YouTube API", "GitHub Actions", "Automation", "Batch Processing"],
     github: "https://github.com/SH20RAJ/youtube-remote-uploader",
-    live: null,
-    image: "/projects/youtube-remote-uploader.jpg"
+    live: "https://github.com/SH20RAJ/youtube-remote-uploader/releases",
+    image: "https://socialify.git.ci/SH20RAJ/youtube-remote-uploader/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // Fun Projects
   {
     name: "Sequence Game",
-    description: "Pattern recognition and memory game",
+    description: "A beautiful online multiplayer Sequence card game designed specifically for couples, featuring a love-themed design with hearts, pink colors, and special animations. Includes real-time gameplay, room creation, and persistence with MongoDB.",
     category: "fun",
-    tech: ["JavaScript", "Canvas", "Game Development"],
+    tech: ["TypeScript", "JavaScript", "Next.js", "MongoDB", "Socket.io", "Prisma"],
     github: "https://github.com/SH20RAJ/sequence-game",
-    live: null,
-    image: "/projects/sequence-game.jpg"
+    live: "https://sequence.pages.dev/",
+    image: "https://socialify.git.ci/SH20RAJ/sequence-game/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "SopGame",
-    description: "HTML5 game development framework",
+    description: "A modern HTML5 game development framework built on Next.js that streamlines the creation of browser-based games. Features include a flexible game loop, asset management, physics integration, and responsive design for cross-platform gameplay.",
     category: "fun",
-    tech: ["JavaScript", "Canvas", "Game Development"],
+    tech: ["JavaScript", "CSS", "Next.js", "Game Development", "Canvas API"],
     github: "https://github.com/SH20RAJ/sopgame",
-    live: null,
-    image: "/projects/sopgame.jpg"
+    live: "https://sopgame.pages.dev/",
+    image: "https://socialify.git.ci/SH20RAJ/sopgame/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // VS Code Extensions
@@ -283,68 +283,68 @@ export const projectsData = [
   // Chrome Extensions
   {
     name: "Toggle Search Engine",
-    description: "Quickly switch between search engines in Chrome",
+    description: "A powerful Chrome extension that allows you to seamlessly toggle between popular search engines such as Google, Bing, DuckDuckGo, Yahoo, Baidu, and Yandex without leaving your current tab, enhancing browsing efficiency.",
     category: "chrome",
-    tech: ["JavaScript", "Chrome API"],
+    tech: ["JavaScript", "HTML", "Chrome Extension API", "Browser APIs"],
     github: "https://github.com/SH20RAJ/toggle-search-engine",
-    live: null,
-    image: "/projects/toggle-search-engine.jpg"
+    live: "https://sh20raj.github.io/toggle-search-engine/",
+    image: "https://socialify.git.ci/SH20RAJ/toggle-search-engine/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // JS Libraries
   {
     name: "SafeStore",
-    description: "Secure client-side storage library with encryption",
+    description: "An advanced client-side storage library with AES-256 encryption for secure data storage in web applications. Features include automatic encryption/decryption, configurable security options, and support for various storage types.",
     category: "jslibraries",
-    tech: ["JavaScript", "Encryption", "Storage APIs"],
+    tech: ["JavaScript", "Cryptography", "LocalStorage", "Web Security", "IndexedDB"],
     github: "https://github.com/SH20RAJ/SafeStore",
-    live: null,
-    image: "/projects/safestore.jpg"
+    live: "https://www.npmjs.com/package/@sh20raj/safestore",
+    image: "https://socialify.git.ci/SH20RAJ/SafeStore/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Create TanStack App",
-    description: "CLI tool for starting TanStack projects",
+    description: "A powerful CLI tool for instantly setting up fully configured TanStack projects with React Query, React Router, and TanStack Table. Features include template selection, TypeScript/JavaScript options, and automatic dependency installation.",
     category: "jslibraries",
-    tech: ["JavaScript", "Node.js", "CLI"],
+    tech: ["JavaScript", "Node.js", "CLI Tools", "TanStack", "React"],
     github: "https://github.com/SH20RAJ/create-tanstack-app",
-    live: null,
-    image: "/projects/create-tanstack-app.jpg"
+    live: "https://www.npmjs.com/package/create-tanstack-app",
+    image: "https://socialify.git.ci/SH20RAJ/create-tanstack-app/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Create-GI",
-    description: "Generate interactive documentation for GitHub projects",
+    description: "An innovative tool for generating beautiful, interactive documentation websites directly from GitHub repositories. Features automatic README parsing, code highlighting, responsive design, and customization options.",
     category: "jslibraries",
-    tech: ["JavaScript", "Markdown", "GitHub API"],
+    tech: ["JavaScript", "Markdown", "GitHub API", "Documentation", "Static Site Generation"],
     github: "https://github.com/SH20RAJ/create-gi",
-    live: null,
-    image: "/projects/create-gi.jpg"
+    live: "https://www.npmjs.com/package/create-gi",
+    image: "https://socialify.git.ci/SH20RAJ/create-gi/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "BitPlayer",
-    description: "Lightweight audio player library",
+    description: "A lightweight yet feature-rich audio player library for web applications with a customizable UI and advanced features like waveform visualization, playlist management, and audio effects processing.",
     category: "jslibraries",
-    tech: ["JavaScript", "Web Audio API"],
+    tech: ["JavaScript", "Web Audio API", "HTML5", "CSS", "Canvas"],
     github: "https://github.com/SH20RAJ/bitplayer",
-    live: null,
-    image: "/projects/bitplayer.jpg"
+    live: "https://sh20raj.github.io/bitplayer/",
+    image: "https://socialify.git.ci/SH20RAJ/bitplayer/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "SheetFlow",
-    description: "Library for working with spreadsheet data in JavaScript",
+    description: "A powerful JavaScript library for working with spreadsheet data that makes parsing, manipulating, and visualizing spreadsheet data effortless. Features include formula support, cell styling, and data binding.",
     category: "jslibraries",
-    tech: ["JavaScript", "Data Manipulation"],
+    tech: ["JavaScript", "Data Manipulation", "Spreadsheets", "Data Visualization", "CSV/Excel"],
     github: "https://github.com/SH20RAJ/SheetFlow",
-    live: null,
-    image: "/projects/sheetflow.jpg"
+    live: "https://www.npmjs.com/package/sheetflow",
+    image: "https://socialify.git.ci/SH20RAJ/SheetFlow/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Sanskrit",
-    description: "Library for Sanskrit text processing and transliteration",
+    description: "A comprehensive JavaScript library for Sanskrit text processing and transliteration with support for Devanagari to Latin conversions, grammatical analysis, and sandhi rules. Perfect for Sanskrit educational tools and research.",
     category: "jslibraries",
-    tech: ["JavaScript", "NLP", "Linguistics"],
+    tech: ["JavaScript", "NLP", "Linguistics", "Transliteration", "Unicode"],
     github: "https://github.com/SH20RAJ/sanskrit",
-    live: null,
-    image: "/projects/sanskrit.jpg"
+    live: "https://www.npmjs.com/package/@sh20raj/sanskrit",
+    image: "https://socialify.git.ci/SH20RAJ/sanskrit/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // Mobile Apps
@@ -361,49 +361,49 @@ export const projectsData = [
   // Scraping & Reverse Engineering
   {
     name: "OpenDictionaryAPI",
-    description: "Free dictionary API created by scraping various sources",
+    description: "A free, open-source dictionary API that aggregates data from multiple reputable sources, providing comprehensive word definitions, examples, etymology, synonyms, and translations in a clean, consistent format.",
     category: "scraping",
-    tech: ["JavaScript", "Web Scraping", "API Development"],
+    tech: ["JavaScript", "Node.js", "Web Scraping", "API Development", "Data Aggregation"],
     github: "https://github.com/SH20RAJ/OpenDictionaryAPI",
-    live: null,
-    image: "/projects/opendictionaryapi.jpg"
+    live: "https://api.dictionaryapi.dev/",
+    image: "https://socialify.git.ci/SH20RAJ/OpenDictionaryAPI/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "AISanta",
-    description: "AI-powered holiday gift recommendation system",
+    description: "An AI-powered holiday gift recommendation system that uses machine learning to suggest personalized gift ideas based on recipient interests, relationship, budget, and past preferences with curated product links.",
     category: "scraping",
-    tech: ["Python", "ML", "Web Scraping"],
+    tech: ["Python", "Machine Learning", "NLP", "Web Scraping", "Recommendation Systems"],
     github: "https://github.com/SH20RAJ/aisanta",
-    live: null,
-    image: "/projects/aisanta.jpg"
+    live: "https://aisanta.pages.dev",
+    image: "https://socialify.git.ci/SH20RAJ/aisanta/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "Instagram Downloader Web",
-    description: "Web-based Instagram media downloader",
+    description: "A web-based tool for downloading photos, videos, reels, and stories from Instagram. Features a clean interface, batch downloading capabilities, and no login requirements for user privacy.",
     category: "scraping",
-    tech: ["JavaScript", "API", "Media Processing"],
+    tech: ["JavaScript", "Instagram API", "Media Processing", "Browser APIs", "Web APIs"],
     github: "https://github.com/SH20RAJ/instagram-downloader-web",
-    live: null,
-    image: "/projects/instagram-downloader.jpg"
+    live: "https://insta-dl.pages.dev",
+    image: "https://socialify.git.ci/SH20RAJ/instagram-downloader-web/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   
   // PHP
   {
     name: "PHPGram",
-    description: "Instagram-like social platform built with PHP",
+    description: "A complete Instagram-like social media platform built with PHP that features user profiles, photo/video uploads, filters, comments, likes, direct messaging, stories, and hashtag functionality with responsive design.",
     category: "php",
-    tech: ["PHP", "MySQL", "JavaScript"],
+    tech: ["PHP", "MySQL", "JavaScript", "AJAX", "Bootstrap", "Media Processing"],
     github: "https://github.com/SH20RAJ/phpgram",
-    live: null,
-    image: "/projects/phpgram.jpg"
+    live: "https://phpgram.pages.dev",
+    image: "https://socialify.git.ci/SH20RAJ/phpgram/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
   {
     name: "AppPages",
-    description: "PHP framework for quick application development",
+    description: "A lightweight PHP framework for rapid application development that streamlines web application creation with an intuitive MVC architecture, built-in templating, database abstraction, and security features.",
     category: "php",
-    tech: ["PHP", "MVC", "Web Development"],
+    tech: ["PHP", "MVC", "MySQL", "Templating", "Web Development"],
     github: "https://github.com/SH20RAJ/AppPages",
-    live: null,
-    image: "/projects/apppages.jpg"
+    live: "https://sh20raj.github.io/AppPages/",
+    image: "https://socialify.git.ci/SH20RAJ/AppPages/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   }
 ];

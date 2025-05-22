@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import SectionContainer from '../ui/SectionContainer';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { FiCode, FiPenTool, FiBox, FiGlobe, FiServer, FiLayers, FiChevronRight } from 'react-icons/fi';
+import { FiCode, FiPenTool, FiBox, FiGlobe, FiServer, FiLayers, FiChevronRight, FiUser, FiAward } from 'react-icons/fi';
 import { useIntersectionObserver, RevealOnScroll } from '@/utils/animation';
 
 const AboutSection = () => {
@@ -112,6 +112,26 @@ const AboutSection = () => {
     }
   };
   
+  // Background blob animation variants
+  const blobVariants = {
+    initial: {
+      scale: 0.8,
+      opacity: 0,
+    },
+    animate: (custom) => ({
+      scale: 1,
+      opacity: 0.15,
+      x: custom % 2 === 0 ? [0, 15, 0, -15, 0] : [0, -15, 0, 15, 0],
+      y: custom % 2 === 0 ? [0, -15, 0, 15, 0] : [0, 15, 0, -15, 0],
+      transition: {
+        x: { repeat: Infinity, duration: 20 + custom * 2, repeatType: 'loop', ease: 'easeInOut' },
+        y: { repeat: Infinity, duration: 25 + custom * 2, repeatType: 'loop', ease: 'easeInOut' },
+        opacity: { duration: 0.8 },
+        scale: { duration: 0.8 }
+      }
+    })
+  };
+  
   // Skill technology display logic
   const renderTechItems = (items) => {
     return items.map((item, index) => (
@@ -128,26 +148,91 @@ const AboutSection = () => {
   };
 
   return (
-    <SectionContainer id="about" ref={sectionRef}>
-      <div className="text-center mb-16" ref={aboutRef}>
+    <SectionContainer id="about" ref={sectionRef} className="relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 -z-10">
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={`about-blob-${i}`}
+            custom={i}
+            variants={blobVariants}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            className={`absolute rounded-full bg-gradient-to-br ${
+              i === 1 
+                ? "from-primary/10 to-accent/5 -top-20 right-[10%] w-[500px] h-[500px]" 
+                : i === 2 
+                ? "from-secondary/10 to-primary/5 bottom-0 -left-20 w-[600px] h-[600px]" 
+                : "from-accent/10 to-secondary/5 top-[40%] right-[20%] w-[300px] h-[300px]"
+            }`}
+            style={{ filter: 'blur(120px)' }}
+          />
+        ))}
+        
+        {/* Decorative pattern overlay */}
+        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] mix-blend-overlay"></div>
+      </div>
+      
+      <div className="text-center mb-16 relative z-10" ref={aboutRef}>
         <RevealOnScroll animation="fade-down" delay={0.1}>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary text-blue-400 bg-clip-text inline-block">
-            About Me
-          </h2>
+          {/* Enhanced Section Title with animated decorative elements */}
+          <div className="relative inline-block mb-2">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-5xl text-primary/10"
+            >
+              <FiUser />
+            </motion.span>
+            
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "80%" }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="h-1 bg-gradient-to-r from-primary/80 to-transparent rounded-full absolute -top-2 left-0"
+            />
+            
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent relative inline-block">
+              <span className="bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 bg-clip-text">About Me</span>
+              
+              {/* Animated underline */}
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="h-1 bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 absolute -bottom-1 left-0 rounded-full"
+              />
+            </h2>
+            
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "60%" }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="h-1 bg-gradient-to-r from-transparent to-primary/80 rounded-full absolute -bottom-4 right-0"
+            />
+          </div>
         </RevealOnScroll>
         
         <RevealOnScroll animation="fade-up" delay={0.3}>
-          <p className="text-foreground/70 max-w-3xl mx-auto text-lg leading-relaxed">
-            I'm a passionate full-stack developer with a deep love for creating elegant solutions to complex problems. 
+          <p className="text-foreground/80 max-w-3xl mx-auto text-xl leading-relaxed tracking-wide mt-8">
+            I'm a passionate full-stack developer with a deep love for creating <span className="text-primary font-semibold">elegant solutions</span> to complex problems. 
             With expertise spanning multiple technologies and domains, I craft digital experiences that are both
-            beautiful and functional.
+            <span className="text-secondary font-semibold"> beautiful and functional</span>.
           </p>
         </RevealOnScroll>
       </div>
       
-      {/* TABS */}
-      <div className="mb-12">
-        <div className="flex flex-wrap justify-center gap-3 md:gap-6 mb-12">
+      {/* TABS with enhanced UI */}
+      <div className="mb-16">
+        <div className="flex flex-wrap justify-center gap-4 mb-16 relative">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ duration: 1 }}
+            className="absolute h-1.5 bg-gradient-to-r from-primary/5 via-secondary/20 to-primary/5 bottom-0 left-0 right-0 rounded-full" 
+          />
+          
           <motion.button
             onClick={() => setActiveTab("specializations")}
             variants={tabVariants}
@@ -155,13 +240,22 @@ const AboutSection = () => {
             animate={activeTab === "specializations" ? "active" : "inactive"}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-5 py-3 rounded-lg font-medium transition-all ${
+            className={`px-6 py-4 rounded-xl font-semibold text-lg transition-all relative ${
               activeTab === "specializations" 
-                ? "bg-primary/10 text-primary" 
-                : "bg-muted text-foreground/70"
+                ? "bg-gradient-to-br from-primary/20 to-secondary/20 text-primary shadow-lg shadow-primary/5" 
+                : "bg-muted/30 text-foreground/70 hover:bg-muted/50"
             }`}
           >
-            Specializations
+            {activeTab === "specializations" && (
+              <motion.div 
+                className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"
+                layoutId="tabIndicator"
+              />
+            )}
+            <span className="flex items-center gap-2">
+              <FiAward className={activeTab === "specializations" ? "text-primary" : ""} /> 
+              Specializations
+            </span>
           </motion.button>
           
           <motion.button
@@ -171,12 +265,18 @@ const AboutSection = () => {
             animate={activeTab === "technologies" ? "active" : "inactive"}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-5 py-3 rounded-lg font-medium transition-all ${
+            className={`px-6 py-4 rounded-xl font-semibold text-lg transition-all relative ${
               activeTab === "technologies" 
-                ? "bg-primary/10 text-primary" 
-                : "bg-muted text-foreground/70"
+                ? "bg-gradient-to-br from-primary/20 to-secondary/20 text-primary shadow-lg shadow-primary/5" 
+                : "bg-muted/30 text-foreground/70 hover:bg-muted/50"
             }`}
           >
+            {activeTab === "technologies" && (
+              <motion.div 
+                className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"
+                layoutId="tabIndicator"
+              />
+            )}
             Technologies
           </motion.button>
           
@@ -187,19 +287,25 @@ const AboutSection = () => {
             animate={activeTab === "journey" ? "active" : "inactive"}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-5 py-3 rounded-lg font-medium transition-all ${
+            className={`px-6 py-4 rounded-xl font-semibold text-lg transition-all relative ${
               activeTab === "journey" 
-                ? "bg-primary/10 text-primary" 
-                : "bg-muted text-foreground/70"
+                ? "bg-gradient-to-br from-primary/20 to-secondary/20 text-primary shadow-lg shadow-primary/5" 
+                : "bg-muted/30 text-foreground/70 hover:bg-muted/50"
             }`}
           >
+            {activeTab === "journey" && (
+              <motion.div 
+                className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full"
+                layoutId="tabIndicator"
+              />
+            )}
             My Journey
           </motion.button>
         </div>
         
+        {/* Tab Content */}
         <AnimatePresence mode="wait">
-          {/* SPECIALIZATIONS TAB */}
-          {activeTab === 'specializations' && (
+          {activeTab === "specializations" && (
             <motion.div
               key="specializations"
               initial={{ opacity: 0, y: 20 }}
@@ -207,50 +313,66 @@ const AboutSection = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {specializations.map((specialization) => (
                   <motion.div
                     key={specialization.id}
                     variants={cardVariants}
                     initial="initial"
                     whileHover="hover"
+                    animate={hoveredCard === specialization.id ? "hover" : "initial"}
                     onHoverStart={() => setHoveredCard(specialization.id)}
                     onHoverEnd={() => setHoveredCard(null)}
-                    className="p-6 rounded-xl border border-border transition-all relative overflow-hidden"
+                    className="bg-card border border-border/50 rounded-xl p-6 relative overflow-hidden group"
                   >
-                    {/* Background gradient effect on hover */}
+                    {/* Decorative background pattern */}
+                    <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10" 
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 3px 3px, rgba(var(--primary-rgb), 0.15) 1px, transparent 0)`,
+                        backgroundSize: '20px 20px'
+                      }} 
+                    />
+                    
+                    {/* Icon with enhanced container */}
+                    <div className="mb-4 inline-flex items-center justify-center">
+                      <motion.div 
+                        className="w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 text-primary"
+                        whileHover={{ rotate: 5, scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {specialization.icon}
+                      </motion.div>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                      {specialization.title}
+                    </h3>
+                    
+                    <p className="text-foreground/70">
+                      {specialization.description}
+                    </p>
+                    
+                    {/* Hover indicator */}
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 -z-10"
-                      animate={{ 
-                        opacity: hoveredCard === specialization.id ? 1 : 0 
-                      }}
+                      className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary to-secondary rounded-br-xl rounded-bl-xl"
+                      initial={{ width: 0 }}
+                      whileHover={{ width: "100%" }}
                       transition={{ duration: 0.3 }}
                     />
                     
-                    <div className="mb-4 p-3 rounded-lg bg-muted inline-block text-primary">
-                      {specialization.icon}
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{specialization.title}</h3>
-                    <p className="text-foreground/70">{specialization.description}</p>
-                    
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
+                    {/* Hover glow effect */}
+                    <motion.div 
+                      className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-20" 
                       animate={{ 
-                        opacity: hoveredCard === specialization.id ? 1 : 0,
-                        scale: hoveredCard === specialization.id ? 1 : 0.8, 
+                        opacity: hoveredCard === specialization.id ? 0.2 : 0 
                       }}
-                      transition={{ duration: 0.2 }}
-                      className="mt-4 flex items-center text-primary text-sm font-medium"
-                    >
-                      Learn more <FiChevronRight className="ml-1" />
-                    </motion.div>
+                    />
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           )}
           
-          {/* TECHNOLOGIES TAB */}
           {activeTab === 'technologies' && (
             <motion.div
               key="technologies"
@@ -332,7 +454,6 @@ const AboutSection = () => {
             </motion.div>
           )}
           
-          {/* JOURNEY TAB */}
           {activeTab === 'journey' && (
             <motion.div
               key="journey"
