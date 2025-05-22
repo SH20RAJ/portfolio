@@ -297,16 +297,16 @@ const ProjectsSection = () => {
               />
 
               <div className="h-52 bg-muted flex items-center justify-center group overflow-hidden relative">
-                {project.image ? (
+                {project ? (
                   <div className="relative w-full h-full overflow-hidden">
                     <motion.img
-                      src={project.image.startsWith('/') ? project.image : `/${project.image}`}
+                      src={project.image}
                       alt={project.name}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out"
                       whileHover={{ scale: 1.1 }}
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = `https://placehold.co/600x400/3a86ff/FFFFFF?text=${encodeURIComponent(project.name)}`;
+                        e.target.src = project.image || `https://placehold.co/600x400/3a86ff/FFFFFF?text=${encodeURIComponent(project.name)}`;
                       }}
                     />
 

@@ -310,7 +310,7 @@ ${formData.message}`
               <div className="flex space-x-4">
                 {[
                   { icon: <FiGithub size={20} />, href: "https://github.com/SH20RAJ", label: "GitHub" },
-                  { icon: <FiLinkedin size={20} />, href: "https://linkedin.com/in/shaswatraj", label: "LinkedIn" },
+                  { icon: <FiLinkedin size={20} />, href: "https://linkedin.com/in/sh20raj", label: "LinkedIn" },
                   { icon: <FiTwitter size={20} />, href: "https://twitter.com/SH20RAJ", label: "Twitter" }
                 ].map((social) => (
                   <motion.a

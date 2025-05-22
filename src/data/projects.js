@@ -24,7 +24,7 @@ export const projectsData = [
     tech: ["Next.js", "React", "LocalStorage", "PWA"],
     github: "https://github.com/SH20RAJ/notesflow",
     live: "https://notesflow.pages.dev",
-    image: "https://socialify.git.ci/SH20RAJ/notesflow/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+    image: "https://i.ibb.co/twghXwLL/Screenshot-2025-05-22-at-9-33-08-AM.png"
   },
   {
     name: "Reflecto",
@@ -33,7 +33,7 @@ export const projectsData = [
     tech: ["React", "Next.js", "AI", "Tailwind CSS"],
     github: "https://github.com/SH20RAJ/reflecto",
     live: "https://reflecto.netlify.app/",
-    image: "https://socialify.git.ci/SH20RAJ/reflecto/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+    image: "https://i.ibb.co/1tDkptVS/Screenshot-2025-05-22-at-9-38-58-AM.png"
   },
   {
     name: "SketchFlow",
@@ -42,26 +42,37 @@ export const projectsData = [
     tech: ["React", "Canvas API", "WebSockets", "Node.js", "MongoDB"],
     github: "https://github.com/SH20RAJ/sketchflow",
     live: "https://sketchflow.space",
-    image: "https://socialify.git.ci/SH20RAJ/sketchflow/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+    image: "https://i.ibb.co/k2qr4gtF/Screenshot-2025-05-22-at-9-40-30-AM.png"
   },
   {
-    name: "PlayTube",
-    description: "A full-featured YouTube clone with video upload and playback, user authentication, comments, likes, subscriptions, search, trending videos, and user profiles powered by a PHP/MySQL backend.",
+    name: "CreoYT",
+    description: "An all-in-one platform for YouTube creators with AI-powered tools for channel analysis, content research, thumbnail creation, competitor tracking, and video repurposing to optimize channel growth.",
     category: "fullstack",
-    tech: ["PHP", "MySQL", "JavaScript", "FFmpeg", "CSS"],
-    github: "https://github.com/SH20RAJ/playtube",
-    live: "https://playtube.pages.dev",
-    image: "https://socialify.git.ci/SH20RAJ/playtube/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+    tech: ["React", "Next.js", "YouTube API", "OpenAI", "MongoDB"],
+    github: "https://github.com/SH20RAJ/creoyt",
+    live: "https://creoyt.netlify.app/",
+    image: "https://i.ibb.co/KjtyYb44/Screenshot-2025-05-22-at-9-41-59-AM.png"
   },
   {
-    name: "Scaleboard",
-    description: "An all-in-one platform for indie hackers and startup founders to showcase projects, track metrics with verified analytics, and build in public with full transparency and customization options.",
-    category: "fullstack",
-    tech: ["Next.js", "Tailwind CSS", "Node.js", "PostgreSQL", "Stripe API"],
-    github: "https://github.com/SH20RAJ/scaleboard",
-    live: "https://scaleboard.org",
-    image: "https://socialify.git.ci/SH20RAJ/scaleboard/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+    name: "Bitsyll",
+    description: "A comprehensive platform for BIT Mesra students that provides centralized access to study materials, lecture notes, assignments, and previous year question papers to enhance the learning experience.",
+    category: "websites",
+    tech: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/SH20RAJ/bitsyll",
+    live: "https://bitsyll.pages.dev/",
+    image: "https://i.ibb.co/Jj4bmhFB/Screenshot-2025-05-22-at-9-43-32-AM.png"
   },
+
+  {
+    name: "SocialScribe",
+    description: "An AI-powered tool that helps create tailored social media posts, comments, and direct messages with customizable tone, formality, and platform-specific adjustments for platforms like LinkedIn, Twitter, and Facebook.",
+    category: "websites",
+    tech: ["React", "Next.js", "Gemini AI", "JavaScript", "CSS"],
+    github: "https://github.com/SH20RAJ/SocialScribe",
+    live: "https://socialscribe.pages.dev",
+    image: "https://i.ibb.co/8ng5N1Yz/Screenshot-2025-05-22-at-9-47-10-AM.png"
+  },
+
   {
     name: "AayeChup",
     description: "An AI voice conversation platform that enables natural voice interactions with multiple AI personalities, creating an experience similar to a phone call with high-quality voice processing and real-time responses.",
@@ -71,15 +82,7 @@ export const projectsData = [
     live: "https://aayechup.shade.cool",
     image: "https://socialify.git.ci/SH20RAJ/aayechup/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
-  {
-    name: "CreoYT",
-    description: "An all-in-one platform for YouTube creators with AI-powered tools for channel analysis, content research, thumbnail creation, competitor tracking, and video repurposing to optimize channel growth.",
-    category: "fullstack",
-    tech: ["React", "Next.js", "YouTube API", "OpenAI", "MongoDB"],
-    github: "https://github.com/SH20RAJ/creoyt",
-    live: "https://creoyt.netlify.app/",
-    image: "https://socialify.git.ci/SH20RAJ/creoyt/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
-  },
+  
   {
     name: "Article",
     description: "A free open-source blogging platform that allows writers to publish articles on various genres while automating classification, SEO, audience management, and outreach to help content creators focus on writing.",
@@ -98,17 +101,28 @@ export const projectsData = [
     live: "https://multiversal.pages.dev/",
     image: "https://socialify.git.ci/SH20RAJ/Multiversal/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
+  {
+    name: "PlayTube",
+    description: "A full-featured YouTube clone with video upload and playback, user authentication, comments, likes, subscriptions, search, trending videos, and user profiles powered by a PHP/MySQL backend.",
+    category: "fullstack",
+    tech: ["PHP", "MySQL", "JavaScript", "FFmpeg", "CSS"],
+    github: "https://github.com/SH20RAJ/playtube",
+    live: "https://playtube.pages.dev",
+    image: "https://socialify.git.ci/SH20RAJ/playtube/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+    
+  {
+    name: "Scaleboard",
+    description: "An all-in-one platform for indie hackers and startup founders to showcase projects, track metrics with verified analytics, and build in public with full transparency and customization options.",
+    category: "fullstack",
+    tech: ["Next.js", "Tailwind CSS", "Node.js", "PostgreSQL", "Stripe API"],
+    github: "https://github.com/SH20RAJ/scaleboard",
+    live: "https://scaleboard.org",
+    image: "https://socialify.git.ci/SH20RAJ/scaleboard/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
   
   // Websites
-  {
-    name: "Bitsyll",
-    description: "A comprehensive platform for BIT Mesra students that provides centralized access to study materials, lecture notes, assignments, and previous year question papers to enhance the learning experience.",
-    category: "websites",
-    tech: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
-    github: "https://github.com/SH20RAJ/bitsyll",
-    live: "https://bitsyll.pages.dev/",
-    image: "https://socialify.git.ci/SH20RAJ/bitsyll/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
-  },
+  
   {
     name: "PeerDrop",
     description: "A privacy-focused, peer-to-peer file sharing app that enables secure, serverless file transfers. Files are end-to-end encrypted via WebRTC and never touch any third-party server.",
@@ -154,15 +168,7 @@ export const projectsData = [
     live: "https://waitlist-js.vercel.app/",
     image: "https://socialify.git.ci/SH20RAJ/waitlist.js/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   },
-  {
-    name: "SocialScribe",
-    description: "An AI-powered tool that helps create tailored social media posts, comments, and direct messages with customizable tone, formality, and platform-specific adjustments for platforms like LinkedIn, Twitter, and Facebook.",
-    category: "websites",
-    tech: ["React", "Next.js", "Gemini AI", "JavaScript", "CSS"],
-    github: "https://github.com/SH20RAJ/SocialScribe",
-    live: "https://socialscribe.pages.dev",
-    image: "https://socialify.git.ci/SH20RAJ/SocialScribe/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
-  },
+  
   
   // Desktop Apps
   {

@@ -407,7 +407,7 @@ const Footer = () => {
                   <FiHeart size={14} className="fill-current" />
                 </motion.span>
               </span>
-              using <span className="font-medium text-foreground/80">Next.js</span> and <span className="font-medium text-foreground/80">TailwindCSS</span>
+              by Shaswat Raj
             </p>
           </div>
         </motion.div>

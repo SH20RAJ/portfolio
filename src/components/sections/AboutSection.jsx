@@ -5,7 +5,8 @@ import Image from 'next/image';
 import SectionContainer from '../ui/SectionContainer';
 import { motion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { FiCode, FiPenTool, FiBox, FiGlobe, FiServer, FiLayers, FiChevronRight, FiUser, FiAward, 
-  FiHeart, FiCoffee, FiBook, FiMusic, FiZap, FiEye, FiSettings, FiLinkedin, FiGithub, FiTwitter } from 'react-icons/fi';
+  FiHeart, FiCoffee, FiBook, FiMusic, FiZap, FiEye, FiSettings, FiLinkedin, FiGithub, FiTwitter, 
+  FiArrowRight} from 'react-icons/fi';
 import { TbCoffee, TbMicrophone, TbBrain, TbWorldCode, TbDeviceDesktop } from 'react-icons/tb';
 import { useIntersectionObserver, RevealOnScroll } from '@/utils/animation';
 
@@ -404,7 +405,6 @@ const AboutSection = () => {
               transition={{ delay: 0.5, duration: 1, type: "spring" }}
               className="absolute -top-10 left-1/2 transform -translate-x-1/2 text-5xl text-primary/10"
             >
-              <FiUser />
             </motion.span>
             
             <motion.div
@@ -413,25 +413,21 @@ const AboutSection = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="h-1 bg-gradient-to-r from-primary/80 to-transparent rounded-full absolute -top-2 left-0"
             />
-            
-            <motion.div
-              variants={shimmerVariants}
-              initial="initial"
-              animate="animate"
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -z-10"
-              style={{ backgroundSize: "200% 100%" }}
-            />
-            
+                
+                <motion.div
+                  variants={shimmerVariants}
+                  initial="initial"
+                  animate="animate"
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -z-10"
+                  style={{ backgroundSize: "200% 100%" }}
+                />
+                
             <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-clip-text text-transparent relative inline-block">
-              <span className="bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 bg-clip-text">About Me</span>
+              <span className="bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 bg-clip-text">
+                About Me
+                </span>
               
-              {/* Animated underline */}
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="h-1 bg-gradient-to-r from-blue-500 via-violet-600 to-purple-500 absolute -bottom-1 left-0 rounded-full"
-              />
+            
             </h2>
             
             <motion.div
