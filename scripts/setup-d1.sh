@@ -26,11 +26,16 @@ echo "✅ wrangler.jsonc updated."
 
 # Run the migration to create contacts table
 echo "Running database migration..."
-npx wrangler d1 execute portfolio_db --file=./migrations/0000_create_contacts_table.sql
+npx wrangler d1 execute portfolio_db --file=./migrations/0000_create_contacts_table.sql --remote
 
 # Create local development database
 echo "Creating local development database..."
-npx wrangler d1 execute portfolio_db --local --file=./migrations/0000_create_contacts_table.sql
+npx wrangler d1 execute portfolio_db --local --file=./migrations/0000_create_contacts_table.sql --local
+if [ $? -ne 0 ]; then
+  echo "❌ Migration failed. Please check the SQL file for errors."
+  exit 1
+fi
+echo "✅ Local development database done."
 
 echo "✅ Migration completed successfully."
 echo "🎉 D1 database setup complete! Your contact form is now ready to use Cloudflare D1."
