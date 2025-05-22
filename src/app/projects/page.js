@@ -365,7 +365,7 @@ const GridProjectCard = ({ project }) => {
       onHoverEnd={() => setIsHovered(false)}
     >
       <div className="relative overflow-hidden h-0 pb-[56.25%]">
-        <LazyImage
+        <Image
           src={project.image || '/projects/notesflow.jpg'}
           alt={project.name}
           width={500}

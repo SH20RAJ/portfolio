@@ -173,9 +173,9 @@ const ProjectsSection = () => {
           variants={titleVariants}
           className="px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium inline-block mb-5 shadow-sm shadow-primary/5 border border-primary/10"
         >
-          My Portfolio | <span className="text-primary">🎉</span> 
+          My Portfolio
         </motion.span>
-        <br />
+
         <motion.h2
           variants={titleVariants}
           className="text-3xl md:text-4xl font-bold mb-8 relative inline-block"
