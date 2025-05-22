@@ -15,24 +15,53 @@ const AboutSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isRotating, setIsRotating] = useState(false);
   const [animatePhoto, setAnimatePhoto] = useState(false);
+  const [globalMousePosition, setGlobalMousePosition] = useState({ x: 0, y: 0 });
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   
   const sectionRef = useRef(null);
   const photoRef = useRef(null);
+  const backgroundRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
   const { ref: aboutRef, isIntersecting: isAboutVisible } = useIntersectionObserver({
     threshold: 0.2,
     triggerOnce: true
   });
   
-  // Mouse move effects for 3D card rotation
+  // Check for user's preference for reduced motion
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleMediaChange = (e) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleMediaChange);
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaChange);
+    };
+  }, []);
+
+  // Mouse move effects for 3D card rotation and parallax effects
+  useEffect(() => {
+    // Skip intensive animations if user prefers reduced motion
+    if (prefersReducedMotion) return;
+    
     const handleMouseMove = (e) => {
+      // For 3D card rotation
       if (photoRef.current) {
         const rect = photoRef.current.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         setMousePosition({ x, y });
       }
+      
+      // For parallax background effects
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const mouseXpercentage = Math.round((e.pageX / windowWidth) * 100);
+      const mouseYpercentage = Math.round((e.pageY / windowHeight) * 100);
+      setGlobalMousePosition({ x: mouseXpercentage, y: mouseYpercentage });
     };
     
     window.addEventListener('mousemove', handleMouseMove);
@@ -46,7 +75,7 @@ const AboutSection = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       clearTimeout(timer);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   // Personal data for enhanced about section
   const personalInfo = {
@@ -291,9 +320,9 @@ const AboutSection = () => {
 
   return (
     <SectionContainer id="about" ref={sectionRef} className="relative overflow-hidden">
-      {/* Dynamic Background Elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Animated gradient blobs */}
+      {/* Dynamic Background Elements with Parallax Effect */}
+      <div ref={backgroundRef} className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Animated gradient blobs with parallax */}
         {[1, 2, 3].map((i) => (
           <motion.div
             key={`about-blob-${i}`}
@@ -308,11 +337,17 @@ const AboutSection = () => {
                 ? "from-secondary/10 to-primary/5 bottom-0 -left-20 w-[600px] h-[600px]" 
                 : "from-accent/10 to-secondary/5 top-[40%] right-[20%] w-[300px] h-[300px]"
             }`}
-            style={{ filter: 'blur(120px)' }}
+            style={{ 
+              filter: 'blur(120px)',
+              transform: (isInView && !prefersReducedMotion) ? 
+                `translate(${(globalMousePosition.x - 50) / (i * 10)}px, ${(globalMousePosition.y - 50) / (i * 10)}px)` : 
+                'translate(0px, 0px)',
+              transition: 'transform 0.2s ease-out'
+            }}
           />
         ))}
         
-        {/* Animated floating particles */}
+        {/* Animated floating particles with parallax */}
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={`particle-${i}`}
@@ -326,16 +361,36 @@ const AboutSection = () => {
               height: Math.random() * 6 + 2 + 'px',
               left: Math.random() * 100 + '%',
               top: Math.random() * 100 + '%',
-              filter: 'blur(1px)'
+              filter: 'blur(1px)',
+              transform: (isInView && !prefersReducedMotion) ? 
+                `translate(${(globalMousePosition.x - 50) / ((i % 3 + 1) * -5)}px, ${(globalMousePosition.y - 50) / ((i % 3 + 1) * -5)}px)` : 
+                'translate(0px, 0px)',
+              transition: 'transform 0.1s ease-out'
             }}
           />
         ))}
         
-        {/* Decorative grid pattern */}
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] mix-blend-overlay"></div>
+        {/* Decorative grid pattern with subtle parallax */}
+        <motion.div 
+          className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] mix-blend-overlay"
+          style={{ 
+            transform: (isInView && !prefersReducedMotion) ? 
+              `translate(${(globalMousePosition.x - 50) / 40}px, ${(globalMousePosition.y - 50) / 40}px)` : 
+              'translate(0px, 0px)',
+            transition: 'transform 0.3s ease-out'
+          }}
+        ></motion.div>
         
-        {/* Optional: Gradient mesh effect */}
-        <div className="absolute inset-0 opacity-10 bg-mesh-gradient"></div>
+        {/* Optional: Gradient mesh effect with subtle parallax */}
+        <motion.div 
+          className="absolute inset-0 opacity-10 bg-mesh-gradient"
+          style={{ 
+            transform: (isInView && !prefersReducedMotion) ? 
+              `translate(${(globalMousePosition.x - 50) / -60}px, ${(globalMousePosition.y - 50) / -60}px)` : 
+              'translate(0px, 0px)',
+            transition: 'transform 0.4s ease-out'
+          }}
+        ></motion.div>
       </div>
       
       {/* Main Section Header */}
@@ -400,16 +455,17 @@ const AboutSection = () => {
             variants={photoVariants}
             initial="initial"
             animate={animatePhoto ? "animate" : "initial"}
-            whileHover="hover"
+            whileHover={prefersReducedMotion ? {} : "hover"}
             style={{
               perspective: "1000px",
               transformStyle: "preserve-3d",
-              transform: isRotating ? 
+              transform: (isRotating && !prefersReducedMotion) ? 
                 `rotateY(${(mousePosition.x / 8)}deg) rotateX(${-(mousePosition.y / 8)}deg)` : 
                 "rotateY(0deg) rotateX(0deg)"
             }}
-            onMouseEnter={() => setIsRotating(true)}
-            onMouseLeave={() => setIsRotating(false)}
+            onMouseEnter={() => !prefersReducedMotion && setIsRotating(true)}
+            onMouseLeave={() => !prefersReducedMotion && setIsRotating(false)}
+            aria-label="Profile photo of Shaswat Raj"
           >
             <Image 
               src={personalInfo.image}
