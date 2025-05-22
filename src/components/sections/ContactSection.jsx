@@ -46,23 +46,44 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-        // Create mailto URL with form data
-        const mailtoUrl = `mailto:sh20raj@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-            `Name: ${formData.name}
+        // Send form data to API
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+            // Success
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        } else {
+            throw new Error(data.message || 'Failed to send message');
+        }
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        setSubmitStatus('error');
+        
+        // Fallback to mailto if API fails
+        try {
+            // Create mailto URL with form data as fallback
+            const mailtoUrl = `mailto:sh20raj@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+                `Name: ${formData.name}
 Email: ${formData.email}
 
 Message:
 ${formData.message}`
-        )}`;
+            )}`;
 
-        // Open email client
-        window.location.href = mailtoUrl;
-        
-        // Set success status
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-        setSubmitStatus('error');
+            // Open email client
+            window.location.href = mailtoUrl;
+        } catch (mailtoError) {
+            console.error("Mailto fallback error:", mailtoError);
+        }
     } finally {
         setIsSubmitting(false);
         
@@ -381,9 +402,15 @@ ${formData.message}`
                   animate={{
                     y: focusedInput === 'name' || formData.name ? -24 : 0,
                     scale: focusedInput === 'name' || formData.name ? 0.8 : 1,
-                    color: focusedInput === 'name' ? 'var(--color-primary)' : 'var(--color-foreground)'
+                    color: focusedInput === 'name' ? 'var(--color-primary)' : 'var(--color-foreground)',
+                    opacity: focusedInput === 'name' || formData.name ? 0.8 : 0.6
                   }}
-                  className="absolute left-4 top-4 pointer-events-none origin-left transition-all"
+                  transition={{
+                    y: { type: "spring", stiffness: 400, damping: 25 },
+                    scale: { type: "spring", stiffness: 400, damping: 25 },
+                    color: { duration: 0.2 }
+                  }}
+                  className="absolute left-4 top-4 font-medium text-foreground/70 pointer-events-none origin-left z-10"
                 >
                   Your Name
                 </motion.div>
@@ -404,9 +431,15 @@ ${formData.message}`
                   animate={{
                     y: focusedInput === 'email' || formData.email ? -24 : 0,
                     scale: focusedInput === 'email' || formData.email ? 0.8 : 1,
-                    color: focusedInput === 'email' ? 'var(--color-primary)' : 'var(--color-foreground)'
+                    color: focusedInput === 'email' ? 'var(--color-primary)' : 'var(--color-foreground)',
+                    opacity: focusedInput === 'email' || formData.email ? 0.8 : 0.6
                   }}
-                  className="absolute left-4 top-4 pointer-events-none origin-left transition-all"
+                  transition={{
+                    y: { type: "spring", stiffness: 400, damping: 25 },
+                    scale: { type: "spring", stiffness: 400, damping: 25 },
+                    color: { duration: 0.2 }
+                  }}
+                  className="absolute left-4 top-4 font-medium text-foreground/70 pointer-events-none origin-left z-10"
                 >
                   Your Email
                 </motion.div>
@@ -428,9 +461,15 @@ ${formData.message}`
                 animate={{
                   y: focusedInput === 'subject' || formData.subject ? -24 : 0,
                   scale: focusedInput === 'subject' || formData.subject ? 0.8 : 1,
-                  color: focusedInput === 'subject' ? 'var(--color-primary)' : 'var(--color-foreground)'
+                  color: focusedInput === 'subject' ? 'var(--color-primary)' : 'var(--color-foreground)',
+                  opacity: focusedInput === 'subject' || formData.subject ? 0.8 : 0.6
                 }}
-                className="absolute left-4 top-4 pointer-events-none origin-left transition-all"
+                transition={{
+                  y: { type: "spring", stiffness: 400, damping: 25 },
+                  scale: { type: "spring", stiffness: 400, damping: 25 },
+                  color: { duration: 0.2 }
+                }}
+                className="absolute left-4 top-4 font-medium text-foreground/70 pointer-events-none origin-left z-10"
               >
                 Subject
               </motion.div>
@@ -451,9 +490,15 @@ ${formData.message}`
                 animate={{
                   y: focusedInput === 'message' || formData.message ? -24 : 0,
                   scale: focusedInput === 'message' || formData.message ? 0.8 : 1,
-                  color: focusedInput === 'message' ? 'var(--color-primary)' : 'var(--color-foreground)'
+                  color: focusedInput === 'message' ? 'var(--color-primary)' : 'var(--color-foreground)',
+                  opacity: focusedInput === 'message' || formData.message ? 0.8 : 0.6
                 }}
-                className="absolute left-4 top-4 pointer-events-none origin-left transition-all"
+                transition={{
+                  y: { type: "spring", stiffness: 400, damping: 25 },
+                  scale: { type: "spring", stiffness: 400, damping: 25 },
+                  color: { duration: 0.2 }
+                }}
+                className="absolute left-4 top-4 font-medium text-foreground/70 pointer-events-none origin-left z-10"
               >
                 Your Message
               </motion.div>

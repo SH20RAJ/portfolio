@@ -9,7 +9,10 @@
 		"lint": "next lint",
 		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
 		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-		"cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
+		"cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
+		"setup-d1": "chmod +x ./scripts/setup-d1.sh && ./scripts/setup-d1.sh",
+		"d1-local": "npx wrangler d1 execute portfolio_db --local --file=./migrations/0000_create_contacts_table.sql",
+		"d1-prod": "npx wrangler d1 execute portfolio_db --file=./migrations/0000_create_contacts_table.sql"
 	},
 	"dependencies": {
 		"@headlessui/react": "^2.2.4",
