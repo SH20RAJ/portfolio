@@ -599,7 +599,7 @@ const HeroSection = () => {
               </motion.a>
               
               <motion.a 
-                href="#" 
+                href="/resume.pdf" 
                 className="group px-7 py-4 border border-border hover:border-primary/40 bg-card hover:bg-card/80 rounded-xl font-medium inline-flex items-center gap-2 transition-all hover:-translate-y-1 active:translate-y-0 relative overflow-hidden backdrop-blur-sm"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
