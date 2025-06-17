@@ -26,7 +26,7 @@ echo "✅ wrangler.jsonc updated."
 
 # Run the migration to create contacts table
 echo "Running database migration..."
-npx wrangler d1 execute portfolio_db --file=./migrations/0000_create_contacts_table.sql --remote
+npx wrangler@latest d1 execute portfolio_db --file=./migrations/0000_create_contacts_table.sql --remote
 
 # Create local development database
 echo "Creating local development database..."
