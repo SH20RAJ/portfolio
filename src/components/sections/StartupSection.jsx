@@ -47,7 +47,7 @@ const StartupSection = () => {
                 {/* Right CTA */}
                 <div className="flex-shrink-0">
                   <motion.a
-                    href="https://startups.shraj.workers.dev"
+                    href="https://startups.shaswat.live/"
                     target="_blank"
                     rel="dofollow doreferrer"
                     className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
