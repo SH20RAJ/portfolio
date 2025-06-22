@@ -315,6 +315,28 @@ For more projects and detailed case studies, visit [shaswat.live/projects](https
 
 ---
 
+## 🚀 Startup Portfolio & Investment Opportunities
+
+**8 Active Startups | Multiple Industries | Series A to Pre-Launch Stages**
+
+I've founded and co-founded multiple innovative startups across AI/ML, productivity, social media, and health tech sectors. These ventures represent cutting-edge solutions to real-world problems, with several already generating significant revenue. **Investors welcome to explore opportunities below.**
+
+### 🌐 Explore My Startup Dashboard
+
+**👉 [Visit Startup Portfolio Dashboard](https://startups.shraj.workers.dev)**
+
+**What you can do:**
+- 📊 **View Live Stats** - See real-time funding, revenue, and growth metrics
+- 💰 **Investment Opportunities** - Explore current funding rounds and pitch decks  
+- 🚀 **Try Products** - Test live applications and provide feedback
+- 🤝 **Contribute** - Join as team member, advisor, or technical contributor
+- 📈 **Track Progress** - Monitor startup development and milestones
+- 💬 **Connect** - Reach out for partnerships, collaborations, or investments
+
+---
+
+---
+
 ## 🏆 Key Achievements
 
 ### Open Source Impact

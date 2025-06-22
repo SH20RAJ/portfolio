@@ -5,6 +5,7 @@ import SkillsSection from '@/components/sections/SkillsSection';
 import ContactSection from '@/components/sections/ContactSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
 import BlogSection from '@/components/sections/BlogSection';
+import StartupSection from '@/components/sections/StartupSection';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import BackToTop from '@/components/ui/BackToTop';
@@ -21,6 +22,7 @@ export default function Home() {
         <HeroSection /></div>
         <AboutSection />
         {/* <ExperienceSection /> */}
+        <StartupSection />
         <ProjectsSection />
         <SkillsSection />
         <BlogSection />
