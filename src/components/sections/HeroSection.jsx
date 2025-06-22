@@ -305,8 +305,8 @@ const HeroSection = () => {
                 {[
                   { icon: "🚀", text: "Full Stack Developer" },
                   { icon: "🎨", text: "UI/UX Designer" },
-                  { icon: "💻", text: "50+ Projects Completed" },
-                  { icon: "🏆", text: "4+ Years Experience" },
+                  { icon: "💻", text: "500+ Projects Completed" },
+                  { icon: "🏆", text: "8+ Years Experience" },
                   { icon: "🔍", text: "Problem Solver" },
                   { icon: "🌟", text: "Open Source Enthusiast" }
                 ].map((item, i) => (
