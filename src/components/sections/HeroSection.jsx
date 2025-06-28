@@ -308,7 +308,7 @@ const HeroSection = () => {
                   { icon: "💻", text: "500+ Projects Completed" },
                   { icon: "🏆", text: "8+ Years Experience" },
                   { icon: "🔍", text: "Problem Solver" },
-                  { icon: "🌟", text: "Open Source Enthusiast" }
+                  { icon: "🌟", text: "Open Source Enthusiastd" }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <span className="text-foreground/60 text-xl">{item.icon}</span>
@@ -944,7 +944,7 @@ const HeroSection = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2 }}
                       >
-                        4
+                        8
                       </motion.span>
                       <motion.span 
                         className="text-sm font-bold"
@@ -984,7 +984,7 @@ const HeroSection = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.5 }}
                       >
-                        5
+                        50
                       </motion.span>
                       <motion.span 
                         className="text-sm font-bold"
