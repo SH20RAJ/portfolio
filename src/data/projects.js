@@ -1,5 +1,5 @@
 import { FiCode, FiLayers, FiMonitor, FiSmartphone, FiPackage, FiTool, FiChrome, FiTerminal } from 'react-icons/fi';
-
+import data from './data.json';
 export const projectCategories = [
   { id: 'all', name: 'All', icon: <FiLayers /> },
   { id: 'fullstack', name: 'Full-Stack', icon: <FiCode /> },
@@ -15,7 +15,7 @@ export const projectCategories = [
   { id: 'php', name: 'PHP', icon: <FiCode /> }
 ];
 
-export const projectsData = [
+export const projectsData2 = [
   // Full-Stack Websites
   {
     name: "NotesFlow",
@@ -413,3 +413,5 @@ export const projectsData = [
     image: "https://socialify.git.ci/SH20RAJ/AppPages/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
   }
 ];
+
+export const projectsData = data;

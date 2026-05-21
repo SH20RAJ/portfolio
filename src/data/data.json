@@ -1,0 +1,609 @@
+[
+  {
+    "name": "NotesFlow",
+    "description": "A privacy-focused note-taking application that lets you create, edit, and manage notes with a beautiful interface. Features include local storage, import/export capabilities, dark mode, and works offline.",
+    "category": "fullstack",
+    "tech": [
+      "Next.js",
+      "React",
+      "LocalStorage",
+      "PWA"
+    ],
+    "github": "https://github.com/SH20RAJ/notesflow",
+    "live": "https://notesflow.pages.dev",
+    "image": "https://i.ibb.co/twghXwLL/Screenshot-2025-05-22-at-9-33-08-AM.png"
+  },
+  {
+    "name": "Reflecto",
+    "description": "A minimal yet smart daily reflection app designed for busy users. Features AI-curated questions, voice journaling, mood tracking, and personalized insights that evolve with you over time.",
+    "category": "fullstack",
+    "tech": [
+      "React",
+      "Next.js",
+      "AI",
+      "Tailwind CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/reflecto",
+    "live": "https://reflecto.netlify.app/",
+    "image": "https://i.ibb.co/1tDkptVS/Screenshot-2025-05-22-at-9-38-58-AM.png"
+  },
+  {
+    "name": "SketchFlow",
+    "description": "A powerful collaborative whiteboard platform designed for real-time brainstorming and visual collaboration. Features include customizable templates, recording capabilities, AI assistance, and integration with productivity tools.",
+    "category": "fullstack",
+    "tech": [
+      "React",
+      "Canvas API",
+      "WebSockets",
+      "Node.js",
+      "MongoDB"
+    ],
+    "github": "https://github.com/SH20RAJ/sketchflow",
+    "live": "https://sketchflow.space",
+    "image": "https://i.ibb.co/k2qr4gtF/Screenshot-2025-05-22-at-9-40-30-AM.png"
+  },
+  {
+    "name": "CreoYT",
+    "description": "An all-in-one platform for YouTube creators with AI-powered tools for channel analysis, content research, thumbnail creation, competitor tracking, and video repurposing to optimize channel growth.",
+    "category": "fullstack",
+    "tech": [
+      "React",
+      "Next.js",
+      "YouTube API",
+      "OpenAI",
+      "MongoDB"
+    ],
+    "github": "https://github.com/SH20RAJ/creoyt",
+    "live": "https://creoyt.netlify.app/",
+    "image": "https://i.ibb.co/KjtyYb44/Screenshot-2025-05-22-at-9-41-59-AM.png"
+  },
+  {
+    "name": "Bitsyll",
+    "description": "A comprehensive platform for BIT Mesra students that provides centralized access to study materials, lecture notes, assignments, and previous year question papers to enhance the learning experience.",
+    "category": "websites",
+    "tech": [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "JavaScript"
+    ],
+    "github": "https://github.com/SH20RAJ/bitsyll",
+    "live": "https://bitsyll.pages.dev/",
+    "image": "https://i.ibb.co/Jj4bmhFB/Screenshot-2025-05-22-at-9-43-32-AM.png"
+  },
+  {
+    "name": "SocialScribe",
+    "description": "An AI-powered tool that helps create tailored social media posts, comments, and direct messages with customizable tone, formality, and platform-specific adjustments for platforms like LinkedIn, Twitter, and Facebook.",
+    "category": "websites",
+    "tech": [
+      "React",
+      "Next.js",
+      "Gemini AI",
+      "JavaScript",
+      "CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/SocialScribe",
+    "live": "https://socialscribe.pages.dev",
+    "image": "https://i.ibb.co/8ng5N1Yz/Screenshot-2025-05-22-at-9-47-10-AM.png"
+  },
+  {
+    "name": "AayeChup",
+    "description": "An AI voice conversation platform that enables natural voice interactions with multiple AI personalities, creating an experience similar to a phone call with high-quality voice processing and real-time responses.",
+    "category": "fullstack",
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "OpenAI Whisper",
+      "ElevenLabs",
+      "Tailwind CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/aayechup",
+    "live": "https://aayechup.shade.cool",
+    "image": "https://socialify.git.ci/SH20RAJ/aayechup/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Article",
+    "description": "A free open-source blogging platform that allows writers to publish articles on various genres while automating classification, SEO, audience management, and outreach to help content creators focus on writing.",
+    "category": "fullstack",
+    "tech": [
+      "Next.js",
+      "Prisma",
+      "PostgreSQL",
+      "JavaScript",
+      "Tailwind CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/article",
+    "live": "https://article.shade.cool/",
+    "image": "https://socialify.git.ci/SH20RAJ/article/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Multiversal",
+    "description": "A creative platform where poets, writers, musicians, and storytellers can share diverse content including poems, stories, songs, and scripts, complete with user profiles and social interaction features.",
+    "category": "fullstack",
+    "tech": [
+      "Next.js",
+      "Prisma",
+      "MySQL",
+      "Tailwind CSS",
+      "JavaScript"
+    ],
+    "github": "https://github.com/SH20RAJ/Multiversal",
+    "live": "https://multiversal.pages.dev/",
+    "image": "https://socialify.git.ci/SH20RAJ/Multiversal/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "PlayTube",
+    "description": "A full-featured YouTube clone with video upload and playback, user authentication, comments, likes, subscriptions, search, trending videos, and user profiles powered by a PHP/MySQL backend.",
+    "category": "fullstack",
+    "tech": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "FFmpeg",
+      "CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/playtube",
+    "live": "https://playtube.pages.dev",
+    "image": "https://socialify.git.ci/SH20RAJ/playtube/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Scaleboard",
+    "description": "An all-in-one platform for indie hackers and startup founders to showcase projects, track metrics with verified analytics, and build in public with full transparency and customization options.",
+    "category": "fullstack",
+    "tech": [
+      "Next.js",
+      "Tailwind CSS",
+      "Node.js",
+      "PostgreSQL",
+      "Stripe API"
+    ],
+    "github": "https://github.com/SH20RAJ/scaleboard",
+    "live": "https://scaleboard.org",
+    "image": "https://socialify.git.ci/SH20RAJ/scaleboard/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "PeerDrop",
+    "description": "A privacy-focused, peer-to-peer file sharing app that enables secure, serverless file transfers. Files are end-to-end encrypted via WebRTC and never touch any third-party server.",
+    "category": "websites",
+    "tech": [
+      "WebRTC",
+      "JavaScript",
+      "Socket.io",
+      "Tailwind CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/peerdrop",
+    "live": "https://peerdrop.pages.dev/",
+    "image": "https://socialify.git.ci/SH20RAJ/peerdrop/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "GitProxy",
+    "description": "A service that allows downloading GitHub repositories, releases, and files without revealing the actual repository links, providing an additional layer of security and privacy for distributing code.",
+    "category": "websites",
+    "tech": [
+      "JavaScript",
+      "Node.js",
+      "GitHub API",
+      "Encryption",
+      "Cloudflare Pages"
+    ],
+    "github": "https://github.com/SH20RAJ/gitproxy",
+    "live": "https://gitproxy.pages.dev",
+    "image": "https://socialify.git.ci/SH20RAJ/gitproxy/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Image BG Remover",
+    "description": "A web application that removes backgrounds from images using OpenCV's segmentation methods, featuring an intuitive interface for uploading, processing, and downloading images with transparent backgrounds.",
+    "category": "websites",
+    "tech": [
+      "Python",
+      "OpenCV",
+      "Streamlit",
+      "NumPy",
+      "Image Processing"
+    ],
+    "github": "https://github.com/SH20RAJ/image-bg-remover",
+    "live": "https://bg-rem.streamlit.app/",
+    "image": "https://socialify.git.ci/SH20RAJ/image-bg-remover/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "DevArt React",
+    "description": "A modern blog and content platform built with React that integrates with the Dev.to API to display programming articles and tutorials in a clean, responsive interface.",
+    "category": "websites",
+    "tech": [
+      "React",
+      "Vite",
+      "Dev.to API",
+      "JavaScript",
+      "CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/devart-react",
+    "live": "https://devart-react.pages.dev/",
+    "image": "https://socialify.git.ci/SH20RAJ/devart-react/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Waitlist.js",
+    "description": "A SaaS platform that transforms traditional waitlists into growth engines by combining AI-powered engagement, viral referral systems, and psychological triggers to help businesses build anticipation and maximize conversions.",
+    "category": "websites",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "API",
+      "Analytics"
+    ],
+    "github": "https://github.com/SH20RAJ/waitlist.js",
+    "live": "https://waitlist-js.vercel.app/",
+    "image": "https://socialify.git.ci/SH20RAJ/waitlist.js/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "TubeSonic",
+    "description": "A lightweight, blazing-fast desktop app built with Tauri and React that lets you download YouTube videos and audio in various quality options with a beautiful glass morphism UI design.",
+    "category": "desktop",
+    "tech": [
+      "Tauri",
+      "React",
+      "Rust",
+      "yt-dlp",
+      "JavaScript"
+    ],
+    "github": "https://github.com/SH20RAJ/TubeSonic",
+    "live": "https://github.com/SH20RAJ/TubeSonic/releases",
+    "image": "https://socialify.git.ci/SH20RAJ/TubeSonic/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "NoMouse",
+    "description": "Keyboard-only navigation tool for desktop",
+    "category": "desktop",
+    "tech": [
+      "Electron",
+      "JavaScript",
+      "Accessibility"
+    ],
+    "github": "https://github.com/SH20RAJ/nomouse",
+    "live": null,
+    "image": "/projects/nomouse.jpg"
+  },
+  {
+    "name": "SopPlayer",
+    "description": "A sleek and feature-rich HTML5 video player that enhances the visual experience of videos on web pages. Offers compatibility across devices and browsers with intuitive controls and customizable options.",
+    "category": "jsframeworks",
+    "tech": [
+      "JavaScript",
+      "HTML5 Video",
+      "CSS",
+      "Media API"
+    ],
+    "github": "https://github.com/SH20RAJ/Sopplayer",
+    "live": "https://sh20raj.github.io/Sopplayer/",
+    "image": "https://socialify.git.ci/SH20RAJ/Sopplayer/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "SoundWave",
+    "description": "A modern and customizable HTML5 audio player library with advanced features including waveform visualization, volume/speed controls, loop functionality, and theming support for creating sleek audio experiences.",
+    "category": "jsframeworks",
+    "tech": [
+      "JavaScript",
+      "Web Audio API",
+      "HTML5",
+      "CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/soundwave",
+    "live": "https://sh20raj.github.io/soundwave/",
+    "image": "https://socialify.git.ci/SH20RAJ/soundwave/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Vibly",
+    "description": "A fully customizable video player built on top of Video.js with enhanced features and a modern UI. Features include responsive design, customizable themes, streaming support, accessibility features, and framework compatibility with React, Vue, and Angular.",
+    "category": "jsframeworks",
+    "tech": [
+      "JavaScript",
+      "SCSS",
+      "Video.js",
+      "Media APIs",
+      "Streaming"
+    ],
+    "github": "https://github.com/SH20RAJ/vibly",
+    "live": "https://sh20raj.github.io/vibly/",
+    "image": "https://socialify.git.ci/SH20RAJ/vibly/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "MarkMind Editor",
+    "description": "A Notion-style WYSIWYG editor with AI-powered autocompletion built on Tiptap. Includes rich text editing with Markdown support, slash commands, bubble menus for formatting, image handling, tables support, and a customizable UI with themes.",
+    "category": "jsframeworks",
+    "tech": [
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "AI"
+    ],
+    "github": "https://github.com/SH20RAJ/markmind-editor",
+    "live": "https://npmjs.com/package/markmind-editor",
+    "image": "https://socialify.git.ci/SH20RAJ/markmind-editor/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "SteamLit",
+    "description": "A lightweight Node.js framework for building reactive, data-driven web applications with minimal effort. Features include reactive components, easy API, data visualization tools, and customizable extensions.",
+    "category": "jsframeworks",
+    "tech": [
+      "JavaScript",
+      "Node.js",
+      "Web Components",
+      "Data Visualization"
+    ],
+    "github": "https://github.com/SH20RAJ/steamlit",
+    "live": "https://sh20raj.github.io/steamlit/",
+    "image": "https://socialify.git.ci/SH20RAJ/steamlit/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "OctoPress",
+    "description": "A modern blogging platform that turns GitHub Issues into a CMS for your blog, featuring a beautiful UI with dark mode, SEO optimization, and customizable settings through a simple configuration file.",
+    "category": "jsframeworks",
+    "tech": [
+      "Next.js",
+      "GitHub API",
+      "React",
+      "JavaScript",
+      "CSS"
+    ],
+    "github": "https://github.com/SH20RAJ/OctoPress",
+    "live": "https://octopress.netlify.app",
+    "image": "https://socialify.git.ci/SH20RAJ/OctoPress/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "YouTube Remote Uploader",
+    "description": "A tool that automates downloading videos from remote URLs and uploading them to YouTube using the Data API. Perfect for batch processing and scheduled uploads using GitHub Actions with comprehensive metadata management.",
+    "category": "jsframeworks",
+    "tech": [
+      "Python",
+      "YouTube API",
+      "GitHub Actions",
+      "Automation",
+      "Batch Processing"
+    ],
+    "github": "https://github.com/SH20RAJ/youtube-remote-uploader",
+    "live": "https://github.com/SH20RAJ/youtube-remote-uploader/releases",
+    "image": "https://socialify.git.ci/SH20RAJ/youtube-remote-uploader/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Sequence Game",
+    "description": "A beautiful online multiplayer Sequence card game designed specifically for couples, featuring a love-themed design with hearts, pink colors, and special animations. Includes real-time gameplay, room creation, and persistence with MongoDB.",
+    "category": "fun",
+    "tech": [
+      "TypeScript",
+      "JavaScript",
+      "Next.js",
+      "MongoDB",
+      "Socket.io",
+      "Prisma"
+    ],
+    "github": "https://github.com/SH20RAJ/sequence-game",
+    "live": "https://sequence.pages.dev/",
+    "image": "https://socialify.git.ci/SH20RAJ/sequence-game/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "SopGame",
+    "description": "A modern HTML5 game development framework built on Next.js that streamlines the creation of browser-based games. Features include a flexible game loop, asset management, physics integration, and responsive design for cross-platform gameplay.",
+    "category": "fun",
+    "tech": [
+      "JavaScript",
+      "CSS",
+      "Next.js",
+      "Game Development",
+      "Canvas API"
+    ],
+    "github": "https://github.com/SH20RAJ/sopgame",
+    "live": "https://sopgame.pages.dev/",
+    "image": "https://socialify.git.ci/SH20RAJ/sopgame/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "CodeSeek",
+    "description": "AI-powered coding assistant for VS Code with DeepSeek integration. Features intelligent code completion, chat assistance, name suggestions, and README generation for a supercharged coding workflow.",
+    "category": "vscode",
+    "tech": [
+      "JavaScript",
+      "VS Code API",
+      "DeepSeek AI",
+      "Extensions"
+    ],
+    "github": "https://github.com/SH20RAJ/CodeSeek",
+    "live": "https://marketplace.visualstudio.com/items?itemName=sh20raj.codeseek-shade",
+    "image": "https://socialify.git.ci/SH20RAJ/CodeSeek/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Toggle Search Engine",
+    "description": "A powerful Chrome extension that allows you to seamlessly toggle between popular search engines such as Google, Bing, DuckDuckGo, Yahoo, Baidu, and Yandex without leaving your current tab, enhancing browsing efficiency.",
+    "category": "chrome",
+    "tech": [
+      "JavaScript",
+      "HTML",
+      "Chrome Extension API",
+      "Browser APIs"
+    ],
+    "github": "https://github.com/SH20RAJ/toggle-search-engine",
+    "live": "https://sh20raj.github.io/toggle-search-engine/",
+    "image": "https://socialify.git.ci/SH20RAJ/toggle-search-engine/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "SafeStore",
+    "description": "An advanced client-side storage library with AES-256 encryption for secure data storage in web applications. Features include automatic encryption/decryption, configurable security options, and support for various storage types.",
+    "category": "jslibraries",
+    "tech": [
+      "JavaScript",
+      "Cryptography",
+      "LocalStorage",
+      "Web Security",
+      "IndexedDB"
+    ],
+    "github": "https://github.com/SH20RAJ/SafeStore",
+    "live": "https://www.npmjs.com/package/@sh20raj/safestore",
+    "image": "https://socialify.git.ci/SH20RAJ/SafeStore/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Create TanStack App",
+    "description": "A powerful CLI tool for instantly setting up fully configured TanStack projects with React Query, React Router, and TanStack Table. Features include template selection, TypeScript/JavaScript options, and automatic dependency installation.",
+    "category": "jslibraries",
+    "tech": [
+      "JavaScript",
+      "Node.js",
+      "CLI Tools",
+      "TanStack",
+      "React"
+    ],
+    "github": "https://github.com/SH20RAJ/create-tanstack-app",
+    "live": "https://www.npmjs.com/package/create-tanstack-app",
+    "image": "https://socialify.git.ci/SH20RAJ/create-tanstack-app/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Create-GI",
+    "description": "An innovative tool for generating beautiful, interactive documentation websites directly from GitHub repositories. Features automatic README parsing, code highlighting, responsive design, and customization options.",
+    "category": "jslibraries",
+    "tech": [
+      "JavaScript",
+      "Markdown",
+      "GitHub API",
+      "Documentation",
+      "Static Site Generation"
+    ],
+    "github": "https://github.com/SH20RAJ/create-gi",
+    "live": "https://www.npmjs.com/package/create-gi",
+    "image": "https://socialify.git.ci/SH20RAJ/create-gi/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "BitPlayer",
+    "description": "A lightweight yet feature-rich audio player library for web applications with a customizable UI and advanced features like waveform visualization, playlist management, and audio effects processing.",
+    "category": "jslibraries",
+    "tech": [
+      "JavaScript",
+      "Web Audio API",
+      "HTML5",
+      "CSS",
+      "Canvas"
+    ],
+    "github": "https://github.com/SH20RAJ/bitplayer",
+    "live": "https://sh20raj.github.io/bitplayer/",
+    "image": "https://socialify.git.ci/SH20RAJ/bitplayer/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "SheetFlow",
+    "description": "A powerful JavaScript library for working with spreadsheet data that makes parsing, manipulating, and visualizing spreadsheet data effortless. Features include formula support, cell styling, and data binding.",
+    "category": "jslibraries",
+    "tech": [
+      "JavaScript",
+      "Data Manipulation",
+      "Spreadsheets",
+      "Data Visualization",
+      "CSV/Excel"
+    ],
+    "github": "https://github.com/SH20RAJ/SheetFlow",
+    "live": "https://www.npmjs.com/package/sheetflow",
+    "image": "https://socialify.git.ci/SH20RAJ/SheetFlow/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Sanskrit",
+    "description": "A comprehensive JavaScript library for Sanskrit text processing and transliteration with support for Devanagari to Latin conversions, grammatical analysis, and sandhi rules. Perfect for Sanskrit educational tools and research.",
+    "category": "jslibraries",
+    "tech": [
+      "JavaScript",
+      "NLP",
+      "Linguistics",
+      "Transliteration",
+      "Unicode"
+    ],
+    "github": "https://github.com/SH20RAJ/sanskrit",
+    "live": "https://www.npmjs.com/package/@sh20raj/sanskrit",
+    "image": "https://socialify.git.ci/SH20RAJ/sanskrit/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "AuraAI",
+    "description": "A next-generation smart keyboard app built with React Native and Expo, featuring AI-powered text prediction, multiple themes, customization options, and haptic feedback for an enhanced typing experience.",
+    "category": "mobile",
+    "tech": [
+      "React Native",
+      "Expo",
+      "AI",
+      "TypeScript"
+    ],
+    "github": "https://github.com/SH20RAJ/AuraAI",
+    "live": "https://sh20raj.github.io/AuraAI/",
+    "image": "https://socialify.git.ci/SH20RAJ/AuraAI/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "OpenDictionaryAPI",
+    "description": "A free, open-source dictionary API that aggregates data from multiple reputable sources, providing comprehensive word definitions, examples, etymology, synonyms, and translations in a clean, consistent format.",
+    "category": "scraping",
+    "tech": [
+      "JavaScript",
+      "Node.js",
+      "Web Scraping",
+      "API Development",
+      "Data Aggregation"
+    ],
+    "github": "https://github.com/SH20RAJ/OpenDictionaryAPI",
+    "live": "https://api.dictionaryapi.dev/",
+    "image": "https://socialify.git.ci/SH20RAJ/OpenDictionaryAPI/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "AISanta",
+    "description": "An AI-powered holiday gift recommendation system that uses machine learning to suggest personalized gift ideas based on recipient interests, relationship, budget, and past preferences with curated product links.",
+    "category": "scraping",
+    "tech": [
+      "Python",
+      "Machine Learning",
+      "NLP",
+      "Web Scraping",
+      "Recommendation Systems"
+    ],
+    "github": "https://github.com/SH20RAJ/aisanta",
+    "live": "https://aisanta.pages.dev",
+    "image": "https://socialify.git.ci/SH20RAJ/aisanta/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "Instagram Downloader Web",
+    "description": "A web-based tool for downloading photos, videos, reels, and stories from Instagram. Features a clean interface, batch downloading capabilities, and no login requirements for user privacy.",
+    "category": "scraping",
+    "tech": [
+      "JavaScript",
+      "Instagram API",
+      "Media Processing",
+      "Browser APIs",
+      "Web APIs"
+    ],
+    "github": "https://github.com/SH20RAJ/instagram-downloader-web",
+    "live": "https://insta-dl.pages.dev",
+    "image": "https://socialify.git.ci/SH20RAJ/instagram-downloader-web/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "PHPGram",
+    "description": "A complete Instagram-like social media platform built with PHP that features user profiles, photo/video uploads, filters, comments, likes, direct messaging, stories, and hashtag functionality with responsive design.",
+    "category": "php",
+    "tech": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "AJAX",
+      "Bootstrap",
+      "Media Processing"
+    ],
+    "github": "https://github.com/SH20RAJ/phpgram",
+    "live": "https://phpgram.pages.dev",
+    "image": "https://socialify.git.ci/SH20RAJ/phpgram/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  },
+  {
+    "name": "AppPages",
+    "description": "A lightweight PHP framework for rapid application development that streamlines web application creation with an intuitive MVC architecture, built-in templating, database abstraction, and security features.",
+    "category": "php",
+    "tech": [
+      "PHP",
+      "MVC",
+      "MySQL",
+      "Templating",
+      "Web Development"
+    ],
+    "github": "https://github.com/SH20RAJ/AppPages",
+    "live": "https://sh20raj.github.io/AppPages/",
+    "image": "https://socialify.git.ci/SH20RAJ/AppPages/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Auto"
+  }
+]
